@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="islom.din.dodo_ilmhona_proskills.fragment.screens.HomeFragment"
+        android:label="@string/menu"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="islom.din.dodo_ilmhona_proskills.fragment.screens.ProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile"/>
+    <fragment
+        android:id="@+id/navigation_contact"
+        android:name="islom.din.dodo_ilmhona_proskills.fragment.screens.ContactFragment"
+        android:label="@string/contact"
+        tools:layout="@layout/fragment_contact"/>
+    <fragment
+        android:id="@+id/navigation_basket"
+        android:name="islom.din.dodo_ilmhona_proskills.fragment.screens.BasketFragment"
+        android:label="@string/basket"
+        tools:layout="@layout/fragment_basket"/>
+</navigation>

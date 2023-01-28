@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">dodo-ilmhona-proSkills</string>
+    <string name="menu">Меню</string>
+    <string name="profile">Профиль</string>
+    <string name="contact">Контакты</string>
+    <string name="basket">Корзина</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
