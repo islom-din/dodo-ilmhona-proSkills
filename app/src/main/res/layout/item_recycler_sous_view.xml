@@ -3,30 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp">
+    android:layout_margin="5dp">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/seconcklik"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:strokeWidth="2dp"
-        app:strokeColor="#FF5722"
-        android:visibility="invisible"
         android:padding="5dp"
-        app:shapeAppearance="@style/shape_img"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout_continer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/linearLayout_continer"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout_continer" />
+        app:layout_constraintTop_toTopOf="@+id/linearLayout_continer"
+        app:shapeAppearance="@style/shape_img"
+        app:strokeColor="#FF5722"
+        app:strokeWidth="2dp" />
 
     <ImageView
         android:id="@+id/select_image"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/baseline_check_circle_outline_24"
-        android:layout_marginEnd="11dp"
-        android:visibility="invisible"
         android:layout_marginTop="11dp"
+        android:layout_marginEnd="11dp"
+        android:src="@drawable/baseline_check_circle_outline_24"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,28 +40,30 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-      >
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <ImageView
             android:id="@+id/imageSous"
             android:layout_width="100dp"
-            android:layout_height="120dp"
-            android:layout_margin="15dp"
-            android:padding="5dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="5dp"
+
+            android:contentDescription="TODO"
+            android:padding="10dp"
             android:src="@drawable/ogursipng"
-            app:shapeAppearance="@style/shape_img"
-            android:contentDescription="TODO" />
+            app:shapeAppearance="@style/shape_img" />
 
         <TextView
             android:id="@+id/sous_name"
+            style="@style/TextAppearance.AppCompat.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="5dp"
-            android:text="namee"
-            android:textColor="@color/black" />
+            android:layout_margin="1dp"
+            android:text="Namee"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -76,7 +78,7 @@
                 android:layout_margin="5dp"
                 android:text="22"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -85,23 +87,31 @@
                 android:layout_gravity="center_horizontal"
                 android:text="TJS"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
     </LinearLayout>
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/isoncklik"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:strokeWidth="2dp"
-        app:strokeColor="@color/black"
-        android:visibility="visible"
+        android:layout_width="105dp"
+        android:layout_height="152dp"
         android:padding="5dp"
-        app:shapeAppearance="@style/shape_img"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout_continer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/linearLayout_continer"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout_continer" />
+        app:layout_constraintTop_toTopOf="@+id/linearLayout_continer"
+        app:shapeAppearance="@style/shape_img"
+        app:strokeColor="@color/black"
+        app:strokeWidth="2dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="89dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,6 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="shape_img">
-        <item name="cornerSize">10%</item>
+        <item name="cornerSize">7%</item>
     </style>
 </resources>
