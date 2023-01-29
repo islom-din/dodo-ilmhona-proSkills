@@ -59,8 +59,7 @@ class ListSousAdapter: ListAdapter <Sous, ListSousAdapter.SousViewHolder>(MyDiff
                binding.linearLayoutContiner.setBackgroundResource(R.drawable.stoke_select.toInt())
                sous.checked=false
            }else{
-               binding.linearLayoutContiner.setBackgroundResource(R.drawable.stoke.toInt())
-
+               binding.linearLayoutContiner.setBackgroundResource(R.drawable.stoke.toInt())git
            }
 
 
