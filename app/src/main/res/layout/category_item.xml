@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+
+    <TextView
+        android:background="@drawable/shape_category_unchecked"
+        android:paddingVertical="@dimen/super_low_mp"
+        android:paddingHorizontal="@dimen/low_mp"
+        android:id="@+id/categoryText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Комбо"
+        android:textColor="@color/grey_darker" />
+
+</LinearLayout>

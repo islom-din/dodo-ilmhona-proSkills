@@ -1,5 +1,6 @@
 package islom.din.dodo_ilmhona_proskills
 
+import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -17,28 +18,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         //Navigation view getting from layout
         val bottomNavView = binding.bottomNavView
-
-        //Выбранный элемент bottom nav view будет изменить свою картинку при нажатии
-        bottomNavView.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.navigation_home -> { it.icon = getDrawable(R.drawable.ic_pizza_selected)
-                return@setOnItemSelectedListener true
-                }
-                R.id.navigation_profile -> { it.icon = getDrawable(R.drawable.ic_profile_selected)
-                    return@setOnItemSelectedListener true
-                }
-                R.id.navigation_contact -> { it.icon = getDrawable(R.drawable.ic_location_selected)
-                    return@setOnItemSelectedListener true
-                }
-                R.id.navigation_basket -> { it.icon = getDrawable(R.drawable.ic_basket_selected)
-                    return@setOnItemSelectedListener true
-                }
-            }
-            return@setOnItemSelectedListener false
-        }
-
 
         // Getting my Nav Host and setting to it a Nav Controller
         val navFragment = supportFragmentManager.findFragmentById(binding.fragmentsContainer.id) as NavHostFragment

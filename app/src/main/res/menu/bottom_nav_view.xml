@@ -3,22 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_pizza"
+        android:icon="@drawable/selector_home"
         android:title="@string/menu"
         app:showAsAction="always" />
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/ic_profile"
+        android:icon="@drawable/selector_profile"
         android:title="@string/profile"
         app:showAsAction="always" />
     <item
         android:id="@+id/navigation_contact"
-        android:icon="@drawable/ic_location"
+        android:icon="@drawable/selector_contact"
         android:title="@string/contact"
         app:showAsAction="always" />
     <item
         android:id="@id/navigation_basket"
-        android:icon="@drawable/ic_basket"
+        android:icon="@drawable/selector_basket"
         android:title="@string/basket"
         app:showAsAction="always" />
 
