@@ -5,6 +5,20 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp">
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/seconcklik"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:strokeWidth="2dp"
+        app:strokeColor="#FF5722"
+        android:visibility="invisible"
+        android:padding="5dp"
+        app:shapeAppearance="@style/shape_img"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout_continer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout_continer"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout_continer" />
+
     <ImageView
         android:id="@+id/select_image"
         android:layout_width="30dp"
@@ -21,14 +35,13 @@
         android:id="@+id/linearLayout_continer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/stoke"
+
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="@color/black"
-        app:strokeWidth="2dp">
+      >
 
 
         <ImageView
@@ -78,4 +91,17 @@
         </LinearLayout>
 
     </LinearLayout>
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/isoncklik"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:strokeWidth="2dp"
+        app:strokeColor="@color/black"
+        android:visibility="visible"
+        android:padding="5dp"
+        app:shapeAppearance="@style/shape_img"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout_continer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout_continer"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout_continer" />
 </androidx.constraintlayout.widget.ConstraintLayout>

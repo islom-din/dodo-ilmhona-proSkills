@@ -7,6 +7,8 @@ class Sous(
     val image: Int,
     val name : String,
     val sena: Int,
-    var checked: Boolean = false
+    var checked: Boolean =false
 
-)
+) {
+
+}

@@ -1,5 +1,5 @@
-
 package islom.din.dodo_ilmhona_proskills.view
+
 import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
@@ -14,10 +14,13 @@ import islom.din.dodo_ilmhona_proskills.databinding.ItemRecyclerSousViewBinding
 
 import islom.din.dodo_ilmhona_proskills.model.Sous
 
-class ListSousAdapter: ListAdapter <Sous, ListSousAdapter.SousViewHolder>(MyDiffUtil()){
-   private var onClick:((Int) -> Unit) ={}
+class ListSousAdapter : ListAdapter<Sous, ListSousAdapter.SousViewHolder>(MyDiffUtil()) {
+     var onClick: ((Int) -> Unit) = {}
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SousViewHolder {
-    return SousViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_recycler_sous_view,parent,false))
+        return SousViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_recycler_sous_view, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: SousViewHolder, position: Int) {
@@ -26,41 +29,52 @@ class ListSousAdapter: ListAdapter <Sous, ListSousAdapter.SousViewHolder>(MyDiff
         holder.bindSena(getItem(position))
 
     }
-    inner class SousViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+
+    inner class SousViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val binding = ItemRecyclerSousViewBinding.bind(itemView)
         fun bindImage(sous: Sous) {
             binding.imageSous.setImageResource(sous.image)
-            binding.imageSous.setOnClickListener(){
+            binding.seconcklik.setStrokeColorResource(R.color.black.toInt())
+            binding.imageSous.setOnClickListener() {
                 onClick.invoke(adapterPosition)
-                sous.checked =true
-               showChecked(sous)
+                sous.checked = true
+                showChecked(sous)
+                showHide(binding.seconcklik)
+                showHide(binding.selectImage)
+                showHide(binding.isoncklik)
 
-               showHide( binding.selectImage)
-
-                }
             }
+            binding.seconcklik.setOnClickListener(){
+                sous.checked =false
+            }
+
+        }
 
 
         fun bindText(sous: Sous) {
             binding.sousName.text = sous.name
         }
-       fun bindSena(sous: Sous){
-           binding.sena.text = sous.sena.toString()
-    }
-        fun showHide(view:View) {
-            view.visibility = if (view.visibility == View.VISIBLE){
+
+        fun bindSena(sous: Sous) {
+            binding.sena.text = sous.sena.toString()
+        }
+
+        fun showHide(view: View) {
+            view.visibility = if (view.visibility == View.VISIBLE) {
                 View.INVISIBLE
-            } else{
+            } else {
                 View.VISIBLE
             }
         }
-        fun showChecked(sous: Sous){
-           if( sous.checked){
-               binding.linearLayoutContiner.setBackgroundResource(R.drawable.stoke_select.toInt())
-               sous.checked=false
-           }else{
-               binding.linearLayoutContiner.setBackgroundResource(R.drawable.stoke.toInt())git
-           }
+
+        fun showChecked(sous: Sous) {
+            if (sous.checked) {
+
+                binding.seconcklik.setStrokeColorResource(R.color.orange.toInt())
+            } else {
+                binding.seconcklik.setStrokeColorResource(R.color.black.toInt())
+
+            }
 
 
         }

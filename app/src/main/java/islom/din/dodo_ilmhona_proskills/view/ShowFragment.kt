@@ -12,7 +12,7 @@ import islom.din.dodo_ilmhona_proskills.R
 import islom.din.dodo_ilmhona_proskills.databinding.ViewShowFragmentBinding
 import islom.din.dodo_ilmhona_proskills.model.Sous
 
-class ShowFragment:Fragment() {
+class ShowFragment : Fragment() {
     private var fragmentFirstBinding: ViewShowFragmentBinding? = null
     lateinit var recyclerView: RecyclerView
     lateinit var listSousAdapter: ListSousAdapter
@@ -22,24 +22,57 @@ class ShowFragment:Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.view_show_fragment,container,false)
+        return inflater.inflate(R.layout.view_show_fragment, container, false)
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = view.let { ViewShowFragmentBinding.bind(it) }
+
         fragmentFirstBinding = binding
-    recyclerView=binding.recSous
+        recyclerView = binding.recSous
         listSousAdapter = ListSousAdapter()
-        recyclerView.adapter =listSousAdapter
-        recyclerView.layoutManager =  StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL)
-       val list = listOf<Sous>(Sous(1,R.drawable.chedderpng,"sousoso",25),Sous(1,R.drawable.chedderpng,"sousoso",25),Sous(1,R.drawable.chedderpng,"sousoso",25),Sous(1,R.drawable.chedderpng,"sousoso",25),Sous(1,R.drawable.chedderpng,"sousoso",25),Sous(1,R.drawable.chedderpng,"sousoso",25),Sous(1,R.drawable.chedderpng,"sousoso",25),Sous(1,R.drawable.chedderpng,"sousoso",25),Sous(1,R.drawable.chedderpng,"sousoso",25),Sous(1,R.drawable.chedderpng,"sousoso",25),)
+        recyclerView.adapter = listSousAdapter
+        recyclerView.layoutManager = StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL)
+        val list = listOf<Sous>(
+            Sous(1, R.drawable.chedderpng, "sousoso", 25),
+            Sous(1, R.drawable.chedderpng, "sousoso", 25),
+            Sous(1, R.drawable.chedderpng, "sousoso", 25),
+            Sous(1, R.drawable.chedderpng, "sousoso", 25),
+            Sous(1, R.drawable.chedderpng, "sousoso", 25),
+            Sous(1, R.drawable.chedderpng, "sousoso", 25),
+            Sous(1, R.drawable.chedderpng, "sousoso", 25),
+            Sous(1, R.drawable.chedderpng, "sousoso", 25),
+            Sous(1, R.drawable.chedderpng, "sousoso", 25),
+            Sous(1, R.drawable.chedderpng, "sousoso", 25)
+        )
         listSousAdapter.submitList(list)
+
+        listSousAdapter.onClick={ it ->
+            val newList = mutableListOf<Sous>()
+            val periodicList =listSousAdapter.currentList
+
+            for ( index in periodicList.indices){
+
+                if (index == it) {
+                    val listes= periodicList[it]
+                    listes.checked= true
+                    newList.add(listes)
+                }else{
+                newList.add(periodicList[it])
+              }
+                listSousAdapter.submitList(newList)
+            }
+        }
+
 
     }
 
-    companion object{
+    companion object {
         fun newIntent() = ShowFragment()
     }
 }
+
+
+

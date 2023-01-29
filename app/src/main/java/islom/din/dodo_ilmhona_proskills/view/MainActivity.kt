@@ -14,5 +14,6 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.frame_layout,ShowFragment.newIntent())
             .commit()
+
     }
 }
