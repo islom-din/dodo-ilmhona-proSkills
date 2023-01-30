@@ -69,6 +69,7 @@ class ShowFragment : Fragment() {
             binding.small.setBackgroundResource(R.drawable.background_select)
             binding.big.setBackgroundResource(R.drawable.back_selcted)
             binding.normal.setBackgroundResource(R.drawable.back_selcted)
+
         }
         binding.big.setOnClickListener {
             binding.small.setBackgroundResource(R.drawable.back_selcted)
@@ -81,6 +82,7 @@ class ShowFragment : Fragment() {
             binding.big.setBackgroundResource(R.drawable.back_selcted)
             binding.normal.setBackgroundResource(R.drawable.background_select)
         }
+
 
     }
 
