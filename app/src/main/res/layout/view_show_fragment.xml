@@ -127,6 +127,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
                 <TextView
+                    android:id="@+id/classic"
                     android:gravity="center"
                     android:background="@drawable/background_select"
                     android:textColor="@color/black"
@@ -140,6 +141,7 @@
 
 
                 <TextView
+                    android:id="@+id/tonciy"
                     android:gravity="center"
                     android:background="@drawable/back_selcted"
                     android:textColor="@color/black"
@@ -148,7 +150,8 @@
                     android:layout_marginHorizontal="4dp"
                     android:layout_weight="1"
                     android:padding="8dp"
-                    android:text="Традиционное"
+
+                    android:text="Тонкий"
                     />
 
             </LinearLayout>

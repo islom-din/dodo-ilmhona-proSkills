@@ -16,4 +16,7 @@
     <style name="shape_img">
         <item name="cornerSize">7%</item>
     </style>
+    <style name="name_txt">
+        <item name="android:textSize">22sp</item>
+    </style>
 </resources>
