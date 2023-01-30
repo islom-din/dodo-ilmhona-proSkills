@@ -8,9 +8,11 @@
     <color name="secondaryDarkColor">#FF5733</color>
     <color name="primaryTextColor">#000000</color>
     <color name="secondaryTextColor">#fc6b02</color>
+    <color name="secondaryLighter">#fcefdd</color>
 
-    <color name="grey">#8e989f</color>
-    <color name="grey_darker">#e2e3e8</color>
+    <color name="grey">#e2e3e8</color>
+    <color name="grey_darker">#70737a</color>
+    <color name="grey_lighter">#f3f2f7</color>
     <color name="black">#FF000000</color>
 
 </resources>

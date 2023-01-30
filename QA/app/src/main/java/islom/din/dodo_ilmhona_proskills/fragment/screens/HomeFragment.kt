@@ -18,23 +18,38 @@ import islom.din.dodo_ilmhona_proskills.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment() {
     //binding
-    private var _binding : FragmentHomeBinding? = null
+    private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
     //View Model
-    private val viewModel : HomeViewModel by viewModels()
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentHomeBinding.inflate(inflater,container,false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        var naDostavkuButton = binding.naDostavku
+        var vZaleButton = binding.vZale
+
+        naDostavkuButton.setBackgroundResource(R.drawable.shape_chip_white)
+
+        vZaleButton.setOnClickListener {
+            it.setBackgroundResource(R.drawable.shape_chip_white)
+            naDostavkuButton.setBackgroundResource(R.drawable.shape_chip_grey)
+
+        }
+        naDostavkuButton.setOnClickListener {
+            it.setBackgroundResource(R.drawable.shape_chip_white)
+            vZaleButton.setBackgroundResource(R.drawable.shape_chip_grey)
+        }
 
         //  Category recyclerview initialising and setting adapter for it
         val adapterForCategory = CategoryAdapter()
@@ -61,6 +76,9 @@ class HomeFragment : Fragment() {
         val adapterForPizza = PizzaAdapter()
         adapterForPizza.submitList(viewModel.pizzaList)
         binding.pizzaRv.adapter = adapterForPizza
+        binding.pizzaRv.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+
+        }
     }
 
     override fun onDestroyView() {

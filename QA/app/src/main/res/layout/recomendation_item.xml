@@ -4,9 +4,7 @@
     android:layout_margin="@dimen/super_low_mp"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:outlineAmbientShadowColor="@color/black"
-    android:outlineSpotShadowColor="@color/black"
-
+    app:cardElevation="3dp"
     app:cardCornerRadius="@dimen/medium_mp">
 
     <androidx.constraintlayout.widget.ConstraintLayout

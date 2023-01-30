@@ -4,7 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="5dp"
-    android:layout_marginBottom="@dimen/medium_mp">
+    android:layout_marginBottom="@dimen/super_low_mp">
 
     <FrameLayout
 
@@ -20,7 +20,7 @@
             android:id="@+id/storyCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp">
+            app:cardCornerRadius="@dimen/medium_mp">
 
             <ImageView
                 android:id="@+id/storyPhoto"

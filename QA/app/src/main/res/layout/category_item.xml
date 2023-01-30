@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp">
+    android:layout_margin="@dimen/super_low_mp">
 
     <TextView
         android:background="@drawable/shape_category_unchecked"
         android:paddingVertical="@dimen/super_low_mp"
-        android:paddingHorizontal="@dimen/low_mp"
+        android:paddingHorizontal="14dp"
         android:id="@+id/categoryText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
