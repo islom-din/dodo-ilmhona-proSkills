@@ -23,6 +23,7 @@ class ShowFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
     lateinit var listSousAdapter: ListSousAdapter
     private val myViewModel = MyViewModel()
+    private var tybeOfPizza: Boolean =false
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -52,9 +53,12 @@ class ShowFragment : Fragment() {
                 binding.small.setBackgroundResource(R.drawable.background_select)
                 binding.big.setBackgroundResource(R.drawable.back_selcted)
                 binding.normal.setBackgroundResource(R.drawable.back_selcted)
-                //showHide(binding.tonciy)
+                binding.classic.setBackgroundResource(R.drawable.background_select)
+                binding.tonciy.setBackgroundResource(R.drawable.back_selcted)
+                binding.imageShowOder.setImageResource(R.drawable.govyadinapng)
                 binding.tonciy.isGone = true
                 binding.classic.width = ViewGroup.LayoutParams.MATCH_PARENT
+
 
 
                 listSousAdapter.submitList(myViewModel.getListCous())
@@ -65,6 +69,8 @@ class ShowFragment : Fragment() {
                 binding.small.setBackgroundResource(R.drawable.back_selcted)
                 binding.big.setBackgroundResource(R.drawable.background_select)
                 binding.normal.setBackgroundResource(R.drawable.back_selcted)
+                binding.tonciy.setBackgroundResource(R.drawable.back_selcted)
+                binding.imageShowOder.setImageResource(R.drawable.chorizojpg)
                 listSousAdapter.submitList(myViewModel.getListCous1())
                 binding.tonciy.isGone = false
             }
@@ -73,8 +79,16 @@ class ShowFragment : Fragment() {
                 binding.small.setBackgroundResource(R.drawable.back_selcted)
                 binding.big.setBackgroundResource(R.drawable.back_selcted)
                 binding.normal.setBackgroundResource(R.drawable.background_select)
+                binding.tonciy.setBackgroundResource(R.drawable.back_selcted)
+                binding.imageShowOder.setImageResource(R.drawable.travipng)
                 listSousAdapter.submitList(myViewModel.getListCous2())
                 binding.tonciy.isGone = false
+            }
+        binding.tonciy.setOnClickListener {
+            binding.tonciy.setBackgroundResource(R.drawable.background_select)
+            binding.classic.setBackgroundResource(R.drawable.back_selcted)
+                listSousAdapter.submitList(myViewModel.getListCous2())
+
             }
         listSousAdapter.onClick = {
             val newList = mutableListOf<Sous>()

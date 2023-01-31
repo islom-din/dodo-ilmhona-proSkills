@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import islom.din.dodo_ilmhona_proskills.R
 import islom.din.dodo_ilmhona_proskills.databinding.ActivityMainBinding
+import islom.din.dodo_ilmhona_proskills.view.ViewPager.FragmentViewPager
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
