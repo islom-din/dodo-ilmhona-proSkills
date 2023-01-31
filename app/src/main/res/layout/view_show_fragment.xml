@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:scaleType="center"
-                android:src="@drawable/ogursipng"
+                android:src="@drawable/pipperonipng"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 />
