@@ -39,9 +39,9 @@ class ListSousAdapter : ListAdapter<Sous, ListSousAdapter.SousViewHolder>(MyDiff
                 onClick.invoke(adapterPosition)
                 sous.checked = true
                 showChecked(sous)
-                showHide(binding.seconcklik)
+
                 showHide(binding.selectImage)
-                showHide(binding.isoncklik)
+               showHide(binding.isoncklik)
 
             }
             binding.seconcklik.setOnClickListener(){
@@ -70,9 +70,9 @@ class ListSousAdapter : ListAdapter<Sous, ListSousAdapter.SousViewHolder>(MyDiff
         fun showChecked(sous: Sous) {
             if (sous.checked) {
 
-                binding.seconcklik.setStrokeColorResource(R.color.orange.toInt())
+                binding.isoncklik.setStrokeColorResource(R.color.orange.toInt())
             } else {
-                binding.seconcklik.setStrokeColorResource(R.color.black.toInt())
+                binding.isoncklik.setStrokeColorResource(R.color.black.toInt())
 
             }
 

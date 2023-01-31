@@ -2,7 +2,7 @@ package islom.din.dodo_ilmhona_proskills.model
 
 import android.media.Image
 
-class Sous(
+data class Sous(
     val id :Int,
     val image: Int,
     val name : String,

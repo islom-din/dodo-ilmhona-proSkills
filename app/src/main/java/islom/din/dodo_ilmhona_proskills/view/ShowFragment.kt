@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,10 +16,13 @@ import islom.din.dodo_ilmhona_proskills.model.Sous
 import islom.din.dodo_ilmhona_proskills.viewModel.MyViewModel
 
 class ShowFragment : Fragment() {
+
+    lateinit var list: MutableList<Sous>
+
     private var fragmentFirstBinding: ViewShowFragmentBinding? = null
     lateinit var recyclerView: RecyclerView
     lateinit var listSousAdapter: ListSousAdapter
-    private val myViewModel= MyViewModel()
+    private val myViewModel = MyViewModel()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,54 +44,72 @@ class ShowFragment : Fragment() {
         listSousAdapter = ListSousAdapter()
         recyclerView.adapter = listSousAdapter
         recyclerView.layoutManager = StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL)
+        listSousAdapter.submitList(myViewModel.getListCous1())
 
 
 
-        listSousAdapter.onClick={ it ->
-            val newList = mutableListOf<Sous>()
-            val periodicList =listSousAdapter.currentList
+            binding.small.setOnClickListener {
+                binding.small.setBackgroundResource(R.drawable.background_select)
+                binding.big.setBackgroundResource(R.drawable.back_selcted)
+                binding.normal.setBackgroundResource(R.drawable.back_selcted)
+                //showHide(binding.tonciy)
+                binding.tonciy.isGone = true
+                binding.classic.width = ViewGroup.LayoutParams.MATCH_PARENT
 
-            for ( index in periodicList.indices){
 
-                if (index == it) {
-                    val listes= periodicList[it]
-                    listes.checked= true
-                    newList.add(listes)
-                }else{
-                newList.add(periodicList[it])
-              }
-                listSousAdapter.submitList(newList)
+                listSousAdapter.submitList(myViewModel.getListCous())
+
+
             }
+            binding.big.setOnClickListener {
+                binding.small.setBackgroundResource(R.drawable.back_selcted)
+                binding.big.setBackgroundResource(R.drawable.background_select)
+                binding.normal.setBackgroundResource(R.drawable.back_selcted)
+                listSousAdapter.submitList(myViewModel.getListCous1())
+                binding.tonciy.isGone = false
+            }
+
+            binding.normal.setOnClickListener {
+                binding.small.setBackgroundResource(R.drawable.back_selcted)
+                binding.big.setBackgroundResource(R.drawable.back_selcted)
+                binding.normal.setBackgroundResource(R.drawable.background_select)
+                listSousAdapter.submitList(myViewModel.getListCous2())
+                binding.tonciy.isGone = false
+            }
+        listSousAdapter.onClick = {
+            val newList = mutableListOf<Sous>()
+            val periodicList = listSousAdapter.currentList
+
+            for (index in periodicList.indices) {
+                if (index == it) {
+                    val listes = periodicList[it].copy(checked = true)
+                    newList.add(listes)
+                } else {
+                    newList.add(periodicList[index])
+                }
+                listSousAdapter.submitList(newList)
+
+            }
+
+
+
+
+
+
+
+
+
         }
-        binding.small.setOnClickListener {
-            binding.small.setBackgroundResource(R.drawable.background_select)
-            binding.big.setBackgroundResource(R.drawable.back_selcted)
-            binding.normal.setBackgroundResource(R.drawable.back_selcted)
-
-
-            listSousAdapter.submitList(myViewModel.getListCous())
-
-
-        }
-        binding.big.setOnClickListener {
-            binding.small.setBackgroundResource(R.drawable.back_selcted)
-            binding.big.setBackgroundResource(R.drawable.background_select)
-            binding.normal.setBackgroundResource(R.drawable.back_selcted)
-            listSousAdapter.submitList(myViewModel.getListCous1())
-        }
-
-        binding.normal.setOnClickListener {
-            binding.small.setBackgroundResource(R.drawable.back_selcted)
-            binding.big.setBackgroundResource(R.drawable.back_selcted)
-            binding.normal.setBackgroundResource(R.drawable.background_select)
-            listSousAdapter.submitList(myViewModel.getListCous2())
-        }
-
 
     }
 
     companion object {
         fun newIntent() = ShowFragment()
+    }
+
+    fun showHide(view: View) {
+        view.visibility = View.INVISIBLE
+
     }
 }
 

@@ -120,7 +120,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:background="@drawable/back_selcted"
-                android:weightSum="2"
                 android:padding="4dp"
                 android:layout_marginVertical="4dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -141,6 +140,7 @@
 
 
                 <TextView
+
                     android:id="@+id/tonciy"
                     android:gravity="center"
                     android:background="@drawable/back_selcted"
@@ -150,7 +150,6 @@
                     android:layout_marginHorizontal="4dp"
                     android:layout_weight="1"
                     android:padding="8dp"
-
                     android:text="Тонкий"
                     />
 
