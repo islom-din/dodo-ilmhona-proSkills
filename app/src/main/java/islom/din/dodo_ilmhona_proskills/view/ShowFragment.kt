@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import islom.din.dodo_ilmhona_proskills.R
 import islom.din.dodo_ilmhona_proskills.databinding.ViewShowFragmentBinding
 import islom.din.dodo_ilmhona_proskills.model.Sous
-import islom.din.dodo_ilmhona_proskills.viewModel.MyViewModel
 
 class ShowFragment : Fragment() {
     private var fragmentFirstBinding: ViewShowFragmentBinding? = null
