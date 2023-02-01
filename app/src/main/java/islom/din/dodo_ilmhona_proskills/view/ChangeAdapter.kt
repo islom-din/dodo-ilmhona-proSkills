@@ -13,15 +13,22 @@ import islom.din.dodo_ilmhona_proskills.databinding.ItemRecyclerSousViewBinding
 import islom.din.dodo_ilmhona_proskills.model.ChangeData
 
 class ChangeAdapter:ListAdapter<ChangeData,ChangeAdapter.ChangeViewHolder>(ChangDiffutils()) {
+    var onClickItem:((ChangeData)->Unit)? = null
 
-    class ChangeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val binding = ComboDezignBinding.bind(itemView)
+    inner class ChangeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val binding = ComboDezignBinding.bind(itemView)
+
+        init {
+            binding.root.setOnClickListener {
+                onClickItem?.invoke(getItem(adapterPosition))
+            }
+        }
+
         fun bind(changeData: ChangeData){
             binding.changeButton.text =changeData.button
             binding.imageComboDezign.setImageResource(changeData.img)
             binding.nameComboDezign.text = changeData.name
             binding.descriptionComboDezig.text = changeData.description
-
         }
     }
 
