@@ -1,14 +1,14 @@
 package islom.din.dodo_ilmhona_proskills.behruz
 
 import android.os.Bundle
-import android.os.PersistableBundle
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.widget.ViewPager2
 import islom.din.dodo_ilmhona_proskills.databinding.FragmentStoryBinding
+
 
 class StoryFragment : Fragment() {
 
