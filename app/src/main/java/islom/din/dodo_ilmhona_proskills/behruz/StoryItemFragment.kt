@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import islom.din.dodo_ilmhona_proskills.databinding.FragmentStoryBinding
 import islom.din.dodo_ilmhona_proskills.databinding.FragmentStoryItemBinding
@@ -30,8 +31,7 @@ class StoryItemFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //TODO:
         // 1) Load image into ImageView by using Glide
-
-    }
+        }
 
     override fun onStart() {
         super.onStart()
