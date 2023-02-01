@@ -20,7 +20,6 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         app:labelVisibilityMode="labeled"
-        app:itemIconTint="@drawable/selector_nav_item_color"
         app:itemTextColor="@color/primaryTextColor"
         android:id="@+id/bottom_nav_view"
         app:menu="@menu/bottom_nav_view"

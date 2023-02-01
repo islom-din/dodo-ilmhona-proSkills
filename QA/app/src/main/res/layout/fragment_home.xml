@@ -8,10 +8,14 @@
     tools:context=".fragment.screens.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_margin="@dimen/super_low_mp"
+        android:paddingBottom="@dimen/super_low_mp"
         android:id="@+id/choosing_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="6dp"
+        android:translationZ="4dp">
 
         <TextView
             android:id="@+id/city_name"
@@ -107,23 +111,27 @@
                         android:padding="3dp">
 
                         <TextView
+                            android:textSize="12sp"
+                            android:textColor="@color/black"
                             android:id="@+id/na_dostavku"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:background="@drawable/selector_chip_background"
+                            android:background="@drawable/selector_city_background"
                             android:gravity="center"
-                            android:padding="@dimen/low_mp"
+                            android:padding="@dimen/super_low_mp"
                             android:text="@string/na_dostavku" />
 
                         <TextView
+                            android:textSize="12sp"
+                            android:textColor="@color/black"
                             android:id="@+id/v_zale"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:background="@drawable/selector_chip_background"
+                            android:background="@drawable/selector_city_background"
                             android:gravity="center"
-                            android:padding="@dimen/low_mp"
+                            android:padding="@dimen/super_low_mp"
                             android:text="@string/v_zale" />
 
                     </LinearLayout>
@@ -131,7 +139,8 @@
                     <com.google.android.material.divider.MaterialDivider
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/super_low_mp" />
+                        android:layout_marginTop="@dimen/medium_mp"
+                        android:layout_marginBottom="@dimen/super_low_mp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -159,6 +168,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <LinearLayout
+                android:layout_margin="@dimen/low_mp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_scrollFlags="scroll">
@@ -183,6 +193,7 @@
                 app:layout_scrollFlags="scroll" />
 
             <LinearLayout
+                android:id="@+id/category_c"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/super_low_mp"
@@ -194,19 +205,105 @@
 
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/category_rv"
+            <HorizontalScrollView
+                android:id="@+id/category_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/medium_mp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/category_item" />
+                android:paddingHorizontal="@dimen/medium_mp"
+                android:scrollbars="none"
+                android:clipToPadding="false">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_category_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:singleLine="true"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    app:singleSelection="true"
+                    app:selectionRequired="true">
+
+<!--                    <com.google.android.material.chip.Chip-->
+<!--                        android:checked="true"-->
+<!--                        app:chipBackgroundColor="@color/color_for_category"-->
+<!--                        android:textColor="@color/color_for_text_category"-->
+<!--                        style="@style/Widget.MaterialComponents.Chip.Choice"-->
+<!--                        android:id="@+id/chip1"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/pizza"/>-->
+
+<!--                    <com.google.android.material.chip.Chip-->
+<!--                        app:chipBackgroundColor="@color/color_for_category"-->
+<!--                        android:textColor="@color/color_for_text_category"-->
+<!--                        style="@style/Widget.MaterialComponents.Chip.Choice"-->
+<!--                        android:id="@+id/chip2"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/combo"/>-->
+
+<!--                    <com.google.android.material.chip.Chip-->
+<!--                        app:chipBackgroundColor="@color/color_for_category"-->
+<!--                        android:textColor="@color/color_for_text_category"-->
+<!--                        style="@style/Widget.MaterialComponents.Chip.Choice"-->
+<!--                        android:id="@+id/chip3"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/zakuski"/>-->
+
+<!--                    <com.google.android.material.chip.Chip-->
+<!--                        app:chipBackgroundColor="@color/color_for_category"-->
+<!--                        android:textColor="@color/color_for_text_category"-->
+<!--                        style="@style/Widget.MaterialComponents.Chip.Choice"-->
+<!--                        android:id="@+id/chip4"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/deserti"/>-->
+
+<!--                    <com.google.android.material.chip.Chip-->
+<!--                        app:chipBackgroundColor="@color/color_for_category"-->
+<!--                        android:textColor="@color/color_for_text_category"-->
+<!--                        style="@style/Widget.MaterialComponents.Chip.Choice"-->
+<!--                        android:id="@+id/chip5"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/napitki"/>-->
+
+<!--                    <com.google.android.material.chip.Chip-->
+<!--                        app:chipBackgroundColor="@color/color_for_category"-->
+<!--                        android:textColor="@color/color_for_text_category"-->
+<!--                        style="@style/Widget.MaterialComponents.Chip.Choice"-->
+<!--                        android:id="@+id/chip6"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/sousi"/>-->
+
+<!--                    <com.google.android.material.chip.Chip-->
+<!--                        app:chipBackgroundColor="@color/color_for_category"-->
+<!--                        android:textColor="@color/color_for_text_category"-->
+<!--                        android:id="@+id/chip7"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/drugie_tovari"/>-->
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </HorizontalScrollView>
+
+
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/category_rv"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/medium_mp"-->
+<!--                android:orientation="horizontal"-->
+<!--                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--                tools:listitem="@layout/category_item" />-->
 
 
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:clipToPadding="false"
             android:id="@+id/pizza_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -216,5 +313,4 @@
             tools:listitem="@layout/pizza_item" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

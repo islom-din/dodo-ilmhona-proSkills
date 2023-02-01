@@ -1,10 +1,13 @@
 package islom.din.dodo_ilmhona_proskills.adapter
 
+// -------- NOT USED ------------ //
+// ------------------------------//
+
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import islom.din.dodo_ilmhona_proskills.R

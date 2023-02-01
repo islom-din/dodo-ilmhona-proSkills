@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="ChipForOrdering" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:background">@drawable/selector_chip_background</item>
-    </style>
 </resources>
