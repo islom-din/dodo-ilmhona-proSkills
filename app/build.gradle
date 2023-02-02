@@ -29,8 +29,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    viewBinding {
-        enabled = true
+
+    buildFeatures{
+        viewBinding = true
     }
 }
 
@@ -42,10 +43,14 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
     implementation "io.github.geniusrus:multiprogressbar:1.3.2"
-=======
+//=======
     implementation "androidx.viewpager2:viewpager2:1.0.0"
->>>>>>> fbf436f20a2c440478b1488eece87679ce0f725c
+//>>>>>>> fbf436f20a2c440478b1488eece87679ce0f725c
+
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+
 }

@@ -7,10 +7,12 @@
 
     <!-- TODO: get progress view from Shodmon and put it here   -->
 
-    <View
+    <com.genius.multiprogressbar.MultiProgressBar
+        android:id="@+id/story_progress_bar"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:background="@color/black"
+        app:progressColor="@color/purple_200"
+        app:lineColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"

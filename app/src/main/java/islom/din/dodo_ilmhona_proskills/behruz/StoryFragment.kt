@@ -13,6 +13,7 @@ import islom.din.dodo_ilmhona_proskills.shodmon.khushbakht.viewmodel.VpAdapter
 
 class StoryFragment : Fragment() {
     private lateinit var binding: FragmentStoryBinding
+    private lateinit var vpAdapter : VpAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,11 +30,15 @@ class StoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         //TODO:
         // 1) Create adapter instance and set it to viewPages's adapter
         // 2) Start progress view line
 
         binding.viewPager.adapter = VpAdapter(listOf(), requireActivity())
+
+        
     }
 
     override fun onDestroyView() {
