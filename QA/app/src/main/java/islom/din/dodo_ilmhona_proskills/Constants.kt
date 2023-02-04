@@ -9,5 +9,9 @@ class Constants {
         const val NAPITKI = "Напитки"
         const val SOUSI = "Соусы"
         const val DRUGIE = "Другие товары"
+
+        const val MALENKAYA = "Маленькая"
+        const val SREDNAYA = "Средняя"
+        const val BOLSHAYA = "Большая"
     }
 }

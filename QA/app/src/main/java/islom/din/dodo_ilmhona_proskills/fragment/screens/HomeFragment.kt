@@ -9,11 +9,13 @@ import android.widget.ScrollView
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import islom.din.dodo_ilmhona_proskills.Constants
 import islom.din.dodo_ilmhona_proskills.R
 import islom.din.dodo_ilmhona_proskills.adapter.PizzaAdapter
+import islom.din.dodo_ilmhona_proskills.data.Pizza
 import islom.din.dodo_ilmhona_proskills.databinding.ChipItemBinding
 import islom.din.dodo_ilmhona_proskills.databinding.FragmentHomeBinding
 import islom.din.dodo_ilmhona_proskills.viewmodel.HomeViewModel
@@ -27,7 +29,7 @@ class HomeFragment : Fragment() {
     //View Model
     private val viewModel: HomeViewModel by viewModels()
 
-    val adapterForPizza = PizzaAdapter()
+    private lateinit var adapterForPizza : PizzaAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -39,6 +41,17 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        // Pizza recycler view initialising and setting adapter and list for it
+        adapterForPizza = PizzaAdapter { pizza ->
+
+                //Here should be written logic for navigation to another fragment
+//            navigateToShowFragment(pizza)
+        }
+        adapterForPizza.submitList(viewModel.pizzaList)
+        binding.pizzaRv.adapter = adapterForPizza
+
 
         //Creating all categories programmatically
         setupChip()
@@ -52,6 +65,11 @@ class HomeFragment : Fragment() {
 //        settingCategoryRecyclerView()
 
     }
+
+//    private fun navigateToShowFragment(pizza: Pizza) {
+//        val directions = HomeFragmentDirections.navigateToShowFragment(pizza)
+//        findNavController().navigate(directions)
+//    }
 
     private fun scrollingChangeListener() {
         binding.pizzaRv.setOnScrollChangeListener { v, _, _, _, _ ->

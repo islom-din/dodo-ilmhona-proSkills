@@ -6,94 +6,132 @@ import islom.din.dodo_ilmhona_proskills.data.Pizza
 
 class GetPizzaList {
     fun getList(): List<Pizza> {
+
+        var ingridientList = GetIngridientList().getList()
         val list = mutableListOf<Pizza>()
 
-        list.add(Pizza(1, R.raw.img_1,"Новогодный цыплёнок","Смесь сыров чеддре и пармезан, соус альфредо, мандарины,цитрусовый соус, новогодный цеплёнок, сыр моцарелла",
-        60,Constants.PIZZA,true, arrayOf(25,30,35)))
 
-        list.add(Pizza(2, R.raw.img_2,"Буршер пицца","Красный лук, сольёные огурчики, томаты, соус бургер, ветчина залясь, сыр моцарелла",
-            54,Constants.PIZZA,false , arrayOf(25,30,35)))
+        list.add(Pizza(1, R.raw.img_1,"Новогодный цыплёнок","Смесь сыров чеддре и пармезан, соус альфредо, мандарины,цитрусовый соус, новогодный цеплёнок, сыр моцарелла",
+        60,Constants.PIZZA,true, mapOf(Constants.MALENKAYA to 60,Constants.SREDNAYA to 90, Constants.BOLSHAYA to 112),
+        vkusList = mutableListOf(ingridientList[1],ingridientList[2],ingridientList[3],ingridientList[4],ingridientList[5])
+        ))
+
+        list.add(Pizza(2, R.raw.img_2,"Бургер пицца","Красный лук, сольёные огурчики, томаты, соус бургер, ветчина залясь, сыр моцарелла",
+            54,Constants.PIZZA,false ,mapOf(Constants.MALENKAYA to 54,Constants.SREDNAYA to 79, Constants.BOLSHAYA to 96),
+            mutableListOf(ingridientList[6],ingridientList[7],ingridientList[8],ingridientList[9],ingridientList[10],ingridientList[11])))
 
         list.add(Pizza(3, R.raw.img_3,"Аррива","Сыр моцарелла, соус бургер,цыплёнок, соус ранч, острая чоризо из цыплёнка, сладкий перец, красный лук, томаты, чеснок",
-            54,Constants.PIZZA,false, arrayOf(25,30,35)))
+            54,Constants.PIZZA,false, mapOf(Constants.MALENKAYA to 54,Constants.SREDNAYA to 79, Constants.BOLSHAYA to 96),
+            mutableListOf(ingridientList[11],ingridientList[9],ingridientList[12],ingridientList[13],ingridientList[14],ingridientList[15],ingridientList[6],ingridientList[8], ingridientList[16])))
 
         list.add(Pizza(4, R.raw.img_4,"Пепперони","Пепперони из цыплёнка, томатный соус, увеличенная порция моцареллы",
-            54,Constants.PIZZA,false, arrayOf(25,30,35)))
+            54,Constants.PIZZA,false, mapOf(Constants.MALENKAYA to 54,Constants.SREDNAYA to 79, Constants.BOLSHAYA to 96),
+            mutableListOf(ingridientList[17],ingridientList[18],ingridientList[19])))
 
         list.add(Pizza(5, R.raw.img_5,"Додо","Ветчина из цыплёнка, митоболы из говядины, пикантная пепперони из цыплёнка, томаты, шампиньоны, сладкий перей, красный лук, чеснок, томатный соус, моцарелла",
-            60,Constants.PIZZA,false, arrayOf(25,30,35)))
+            60,Constants.PIZZA,false, mapOf(Constants.MALENKAYA to 60,Constants.SREDNAYA to 90, Constants.BOLSHAYA to 112),
+            mutableListOf(ingridientList[21],ingridientList[22],ingridientList[23],ingridientList[8],ingridientList[24],ingridientList[15],ingridientList[6],ingridientList[16], ingridientList[18],ingridientList[25])))
 
         list.add(Pizza(6, R.raw.img_6,"Диалбло","Острая чоризо из цыплёнка, острый перец холапеньо, соус барбекю, митболы из говядины, томаты, сладкий перец, красный лук, томатный соус, моцарелла",
-            58,Constants.PIZZA,false, arrayOf(25,30,35)))
+            58,Constants.PIZZA,false,mapOf(Constants.MALENKAYA to 58,Constants.SREDNAYA to 88, Constants.BOLSHAYA to 110),
+            mutableListOf(ingridientList[14],ingridientList[26],ingridientList[27],ingridientList[28],ingridientList[29],ingridientList[15],ingridientList[6],ingridientList[18], ingridientList[25])))
 
-        list.add(Pizza(7, R.raw.img_7,"Сырная","Смесь сыров чеддер и пармезан соус альфредо, моцарелла",
-            39,Constants.PIZZA,false, arrayOf(25,30,35)))
+        list.add(Pizza(7, R.raw.img_7,"Сырная","Смесь сыров чеддер и пармезан, соус альфредо, моцарелла",
+            39,Constants.PIZZA,false, mapOf(Constants.MALENKAYA to 39,Constants.SREDNAYA to 66, Constants.BOLSHAYA to 86),
+            mutableListOf(ingridientList[31],ingridientList[32],ingridientList[33])))
 
         list.add(Pizza(9, R.raw.img_9,"Пепперони Фреш","Пикатна пепперони из цыплёнка, томаты, томаный соус, увеличенная порция моцаррелы",
-            37,Constants.PIZZA,false, arrayOf(25,30,35)))
+            37,Constants.PIZZA,false, mapOf(Constants.MALENKAYA to 37,Constants.SREDNAYA to 60, Constants.BOLSHAYA to 74),
+            mutableListOf(ingridientList[34],ingridientList[35],ingridientList[36],ingridientList[37])))
 
         list.add(Pizza(10, R.raw.img_10,"Мясная","Цыплёнок, ветчина из цыплёнка, пикантная пепперони из цыплёнка, томатный соус, острая чоризо из цыплёнка, сыр моцарелла",
-            60,Constants.PIZZA,false, arrayOf(25,30,35)))
+            60,Constants.PIZZA,false, mapOf(Constants.MALENKAYA to 60,Constants.SREDNAYA to 90, Constants.BOLSHAYA to 112),
+            mutableListOf(ingridientList[38],ingridientList[39],ingridientList[40],ingridientList[41],ingridientList[42],ingridientList[43])))
+
 
         list.add(Pizza(11, R.raw.img_11,"Маргарита","Томаты, итальянские травы, томатный соус, увеличенная порция моцареллы",
-            44,Constants.PIZZA,false, arrayOf(25,30,35)))
+            44,Constants.PIZZA,false, mapOf(Constants.MALENKAYA to 44,Constants.SREDNAYA to 66, Constants.BOLSHAYA to 86),
+            mutableListOf(ingridientList[44],ingridientList[45],ingridientList[46],ingridientList[47])))
 
         list.add(Pizza(12, R.raw.img_12,"Песто","Соус песто, соус альфредо, цыплёнок, кубики брынзы, томаты, моцарелла",
-            60,Constants.PIZZA,false, arrayOf(25,30,35)))
+            60,Constants.PIZZA,false, mapOf(Constants.MALENKAYA to 60,Constants.SREDNAYA to 90, Constants.BOLSHAYA to 112),
+            mutableListOf(ingridientList[48],ingridientList[49],ingridientList[50],ingridientList[51],ingridientList[52],ingridientList[53])))
+
 
         list.add(Pizza(13, R.raw.img_13,"Двойная пепперони","Пепперони из цыплёнка, томатный соус, моцарелла",
-            60,Constants.PIZZA,false, arrayOf(25,30,35)))
+            60,Constants.PIZZA,false, mapOf(Constants.MALENKAYA to 60,Constants.SREDNAYA to 90, Constants.BOLSHAYA to 112),
+            mutableListOf(ingridientList[54],ingridientList[55],ingridientList[56])))
+
 
         list.add(Pizza(14, R.raw.img_14,"Двойной цыплёнок","Цыплёнок, соу альфредо, моцарелла",
-            37,Constants.PIZZA,false, arrayOf(25,30,35)))
+            37,Constants.PIZZA,false, mapOf(Constants.MALENKAYA to 37,Constants.SREDNAYA to 60, Constants.BOLSHAYA to 74),
+            mutableListOf(ingridientList[57],ingridientList[58],ingridientList[59])))
+
 
         list.add(Pizza(15, R.raw.img_15,"Ветчина и сыр","Ветчина из цыплёнка, сыр моцарелла, соус альфредо",
-            39,Constants.PIZZA,false, arrayOf(25,30,35)))
+            39,Constants.PIZZA,false, mapOf(Constants.MALENKAYA to 37,Constants.SREDNAYA to 60, Constants.BOLSHAYA to 74),
+            mutableListOf(ingridientList[60],ingridientList[61],ingridientList[62])))
+
 
         list.add(Pizza(16, R.raw.img_16,"Карбонара","Увеличенная порция моцареллы, смесь сыров чеддер и пармезан, сыр блю чиз, соус фльфредо",
-            60,Constants.PIZZA,false, arrayOf(25,30,35)))
+            60,Constants.PIZZA,false, mapOf(Constants.MALENKAYA to 54,Constants.SREDNAYA to 79, Constants.BOLSHAYA to 96),
+            mutableListOf(ingridientList[63],ingridientList[64],ingridientList[65],ingridientList[66])))
+
 
         list.add(Pizza(17, R.raw.img_17,"Четыре сыра","Увеличенная порция моцареллы, смесь сыров чеддер и пармезан, сыр блю чиз, соус альфредо",
-            37,Constants.PIZZA,false, arrayOf(25,30,35)))
+            37,Constants.PIZZA,false, mapOf(Constants.MALENKAYA to 60,Constants.SREDNAYA to 60, Constants.BOLSHAYA to 112),
+            mutableListOf(ingridientList[67],ingridientList[68],ingridientList[69],ingridientList[70])))
 
         list.add(Pizza(18, R.raw.img_18,"Четыре сезона","Сыр моцарлла, ветчина из цыплёнка, пикантная пепперони из цыплёнка, кубики брынзф, томаты, шампиньогы, томатный соус, итальянские травы",
-            58,Constants.PIZZA,false, arrayOf(25,30,35)))
+            58,Constants.PIZZA,false, mapOf(Constants.MALENKAYA to 58,Constants.SREDNAYA to 88, Constants.BOLSHAYA to 110),
+            mutableListOf(ingridientList[71],ingridientList[72],ingridientList[73],ingridientList[74],ingridientList[75],ingridientList[76],ingridientList[77],ingridientList[78])))
+
 
         list.add(Pizza(19, R.raw.img_19,"Деревенская","Картофель из печи, огурцы маринованные, цыплёнок, соус, чесночный ранч, томаты свежие, лук красный, чеснок, пицца-соус, сыр моцалрелла",
-            58,Constants.PIZZA,false, arrayOf(25,30,35)))
+            58,Constants.PIZZA,false, mapOf(Constants.MALENKAYA to 58,Constants.SREDNAYA to 88, Constants.BOLSHAYA to 110),
+            mutableListOf(ingridientList[79],ingridientList[80],ingridientList[81],ingridientList[82],ingridientList[83],ingridientList[84],ingridientList[85],ingridientList[86], ingridientList[87],ingridientList[88])))
+
 
         list.add(Pizza(20, R.raw.img_20,"Ветчина и грибы","Ветчина из цыплёнка, шампиньоны, томатный соус, увеличенная порция моцареллы",
-            44,Constants.PIZZA,false, arrayOf(25,30,35)))
+            44,Constants.PIZZA,false, mapOf(Constants.MALENKAYA to 44,Constants.SREDNAYA to 66, Constants.BOLSHAYA to 88),
+            mutableListOf(ingridientList[89],ingridientList[90],ingridientList[91],ingridientList[92])))
 
         list.add(Pizza(21, R.raw.img_21,"3 пиццы","Комбо 2 пиццы 30см на любой вкус",
-            225,Constants.COMBO,true))
+            225,Constants.COMBO,true, arrayCategory = arrayOf(Constants.PIZZA,Constants.PIZZA,Constants.PIZZA)
+        ))
 
         list.add(Pizza(22, R.raw.img_22,"10 средних пицц","10 пицц 30см на любой вкусу. Для компании из 20-30 человек",
-            675,Constants.COMBO))
+            675,Constants.COMBO,arrayCategory = arrayOf(Constants.PIZZA,Constants.PIZZA,Constants.PIZZA,Constants.PIZZA,Constants.PIZZA,Constants.PIZZA,Constants.PIZZA,Constants.PIZZA,Constants.PIZZA,Constants.PIZZA)))
 
         list.add(Pizza(23, R.raw.img_23,"2 пиццы","Самое популяроне комбо из 2 пицц 30см. Большой выбор",
-            156,Constants.COMBO))
+            156,Constants.COMBO, arrayCategory = arrayOf(Constants.PIZZA,Constants.PIZZA)
+        ))
 
         list.add(Pizza(24, R.raw.img_24,"7 пицц","7 пицц 30см на любой вкус. Для компании из 15-20 человек",
-            470,Constants.COMBO))
+            470,Constants.COMBO,arrayCategory = arrayOf(Constants.PIZZA,Constants.PIZZA,Constants.PIZZA,Constants.PIZZA,Constants.PIZZA,Constants.PIZZA,Constants.PIZZA)))
 
         list.add(Pizza(25, R.raw.img_25,"2 пиццы и напиток","2 пиццы 25 см и напиток на выбор, Для компании из 2-4 человек",
-            99,Constants.COMBO))
+            99,Constants.COMBO, arrayCategory = arrayOf(Constants.PIZZA,Constants.PIZZA,Constants.NAPITKI)
+        ))
 
         list.add(Pizza(26, R.raw.img_26,"Пицца и 2 закуски","Пицца 30см и 2 закуски на выбор. Для компании из 2-4 человек",
-            110,Constants.COMBO))
+            110,Constants.COMBO, arrayCategory = arrayOf(Constants.PIZZA,Constants.ZAKUSKI,Constants.ZAKUSKI)
+        ))
 
         list.add(Pizza(27, R.raw.img_27,"4 Додстера","4 любых Додстера на выбор: Отсрый или Классический",
-            89,Constants.COMBO))
+            89,Constants.COMBO, arrayCategory =  arrayOf(Constants.ZAKUSKI,Constants.ZAKUSKI,Constants.ZAKUSKI,Constants.ZAKUSKI)
+        ))
 
         list.add(Pizza(28, R.raw.img_28,"Пицца, додстер, напиток и соус","Пицца 25см, додстер, напиток и соус. Для компании из 2-4 человек",
-            85,Constants.COMBO))
+            85,Constants.COMBO, arrayCategory = arrayOf(Constants.PIZZA,Constants.ZAKUSKI,Constants.NAPITKI,Constants.SOUSI)
+        ))
 
         list.add(Pizza(29, R.raw.img_29,"2 стартера","2 стартера",
-            45,Constants.COMBO))
+            45,Constants.COMBO, arrayCategory = arrayOf(Constants.ZAKUSKI,Constants.ZAKUSKI)))
 
         list.add(Pizza(31, R.raw.img_31,"Две Кока-Колы Zero по суперцене","Две Кока-Колы Zero 0,5 по суперцене",
-            10,Constants.COMBO))
+            10,Constants.COMBO, arrayCategory = arrayOf(Constants.NAPITKI,Constants.NAPITKI)
+        ))
 
         list.add(Pizza(id = 32, image = R.raw.img_32, name = "Додстер", about = "Легендарная горячая закуска с цыплёнком, томатами, моцареллой, соусом ранч в тонкой пшеничной лепешке",
             price = 25, category = Constants.ZAKUSKI, main = true, shtuk = 1))

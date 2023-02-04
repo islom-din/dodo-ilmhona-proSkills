@@ -14,8 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:elevation="6dp"
-        android:translationZ="4dp">
+        android:translationZ="0dp"
+        android:elevation="0dp">
 
         <TextView
             android:id="@+id/city_name"
