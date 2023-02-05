@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.half.FragmentHalfPizza">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:weightSum="2"
+        android:gravity="center">
+
+
+    <LinearLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
+        android:orientation="vertical"
+        android:layout_weight="1"
+
+        android:gravity="center">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/nameHalfPizza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="mdsmds"
+
+            android:typeface="serif"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+             />
+
+        <TextView
+            android:id="@+id/priceHalfPizza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameHalfPizza"
+            android:layout_alignStart="@+id/nameHalfPizza"
+            android:layout_marginStart="10dp"
+
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_toStartOf="@+id/textView"
+            android:text="15"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="33dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameHalfPizza"
+            android:layout_alignEnd="@+id/nameHalfPizza"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="13dp"
+            android:text="  tjk"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+
+    </RelativeLayout>
+<androidx.viewpager2.widget.ViewPager2
+    android:id="@+id/halfPager1"
+    android:layout_gravity="end"
+    android:orientation="vertical"
+    android:layout_width="150dp"
+    android:layout_height="150dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/nameHalfPizza2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="margarita"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+             />
+
+        <TextView
+            android:id="@+id/priceHalfPizza2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameHalfPizza2"
+            android:layout_alignStart="@+id/nameHalfPizza2"
+            android:layout_marginStart="10dp"
+
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+
+            android:text="15"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="33dp" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameHalfPizza2"
+            android:layout_alignEnd="@+id/nameHalfPizza2"
+
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="13dp"
+            android:text="  tjk"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+
+    </RelativeLayout>
+<androidx.viewpager2.widget.ViewPager2
+    android:id="@+id/halfPager2"
+    android:layout_width="150dp"
+    android:orientation="vertical"
+    android:layout_gravity="start"
+    android:layout_height="150dp"/>
+    </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
