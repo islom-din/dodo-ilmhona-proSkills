@@ -1,11 +1,21 @@
 package islom.din.dodo_ilmhona_proskills.view
 
+import android.accessibilityservice.GestureDescription.StrokeDescription
 import android.graphics.Paint
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.StrikethroughSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
+import androidx.core.view.contains
+import androidx.core.view.get
 import androidx.core.view.isGone
+import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,28 +23,25 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import islom.din.dodo_ilmhona_proskills.R
+import islom.din.dodo_ilmhona_proskills.data.Pizza
 import islom.din.dodo_ilmhona_proskills.data.Vkus
 import islom.din.dodo_ilmhona_proskills.databinding.ChipItemBinding
+import islom.din.dodo_ilmhona_proskills.databinding.ChipTextItemBinding
 import islom.din.dodo_ilmhona_proskills.databinding.DeleteIngridientItemBinding
 import islom.din.dodo_ilmhona_proskills.databinding.ViewShowFragmentBinding
-import islom.din.dodo_ilmhona_proskills.model.Pizza
+import islom.din.dodo_ilmhona_proskills.repository.GetVkusList
 import islom.din.dodo_ilmhona_proskills.view.half.FragmentHalfPizza
-import islom.din.dodo_ilmhona_proskills.viewModel.MyViewModel
 
 
 private const val ARG_PARAM1 = "param1"
 private lateinit var pizza: Pizza
 
- class ShowFragment : Fragment() {
+class ShowFragment : Fragment() {
 
 
-
-
-
-     private var _binding: ViewShowFragmentBinding? = null
+    private var _binding: ViewShowFragmentBinding? = null
     lateinit var recycler: RecyclerView
     lateinit var adapter: ListSousAdapter
-    private val myViewModel = MyViewModel()
     var parent1: Pizza? = null
     val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +50,7 @@ private lateinit var pizza: Pizza
             parent1 = it.getParcelable(ARG_PARAM1)
             pizza = parent1!!
 
+
         }
     }
 
@@ -50,7 +58,7 @@ private lateinit var pizza: Pizza
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         this._binding = ViewShowFragmentBinding.inflate(inflater, container, false)
         return binding.root
@@ -59,19 +67,19 @@ private lateinit var pizza: Pizza
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-      val binding = view.let { ViewShowFragmentBinding.bind(it) }
+        val binding = view.let { ViewShowFragmentBinding.bind(it) }
         binding.imageShowOder.setImageResource(pizza.image)
-        binding.nameShowder.text=pizza.name
-        binding.description.text= pizza.name
-        binding.descriptionShowder.text=pizza.about
+        binding.nameShowder.text = pizza.name
+        binding.description.text = pizza.name
         binding.classic.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
-                .add(R.id.frame_layout, FragmentHalfPizza.newInstance()
+                .add(
+                    R.id.frame_layout, FragmentHalfPizza.newInstance()
                 ).commit()
 
 
         }
-
+        setupChipFurst()
         binding.nameShowder.setOnClickListener {
             val view = setupChip()
             MaterialAlertDialogBuilder(requireContext())
@@ -79,6 +87,7 @@ private lateinit var pizza: Pizza
 
                 .setPositiveButton("ГОТОВО") { dialog, which: Int ->
                     dialog.dismiss()
+
                 }
                 .setNegativeButton("Сбросить") { dialog, which: Int ->
                     dialog.cancel()
@@ -87,12 +96,24 @@ private lateinit var pizza: Pizza
                 .show()
         }
 
-//        binding.nameShowder.setOnClickListener {
-//            RemoteDialogFragment().show(
-//                childFragmentManager,RemoteDialogFragment.TAG)
-//        }
-        binding.descriptionShowder.setOnClickListener {
-            getAbout()
+        binding.removeIngrelienites.setOnClickListener {
+            val view = setupChip()
+            MaterialAlertDialogBuilder(requireContext())
+                .setPositiveButton("DONE") { dialog, which ->
+                    Log.d("MyERROR", "${pizza.ingridientList}")
+                    for (ingrident in pizza.ingridientList!!.withIndex())
+                        if (ingrident.index !in view.chipGroup.checkedChipIds)
+                            pizza.ingridientList!![ingrident.index].delete = true
+                    Log.d("MyERROR", "${pizza.ingridientList}")
+                    dialog.dismiss()
+
+                }
+                .setNeutralButton("CLEAR") { dialog, which ->
+
+                    dialog.dismiss()
+                }
+                .setView(view.root)
+                .show()
         }
         getRecycler()
         onClickSmail()
@@ -102,6 +123,7 @@ private lateinit var pizza: Pizza
         getSelectItem()
 
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -118,25 +140,19 @@ private lateinit var pizza: Pizza
             }
 
     }
-     private fun setupChip() : DeleteIngridientItemBinding {
-         //TODO: get ingridients from array
-         // 1) Save them in liveData, this liveData will be saved in ViewModel
-         val deleteIngridient: List<String> = binding.descriptionShowder.text.split(",")
-         var dialogBinding = DeleteIngridientItemBinding.inflate(requireActivity().layoutInflater)
-         for (name in deleteIngridient) {
-             val chip = createChip(name)
-             dialogBinding.chipGroup.addView(chip)
-         }
-         return dialogBinding
-     }
 
-     private fun createChip(ingridient: String): Chip {
-         val chip = ChipItemBinding.inflate(layoutInflater).root
-         chip.text = ingridient
-         return chip
+    /*  private fun setupChip(): DeleteIngridientItemBinding {
+          //TODO: get ingridients from array
+          // 1) Save them in liveData, this liveData will be saved in ViewModel
+          val deleteIngridient: String = pizza.ingridientList?.map { it.name.toString() }.toString()
+          var dialogBinding = DeleteIngridientItemBinding.inflate(requireActivity().layoutInflater)
+          for (name in deleteIngridient) {
+              val chip = createChip(name.toString())
+              dialogBinding.chipGroup.addView(chip)
+          }
+          return dialogBinding
+      }*/
 
-
-     }
 
     fun showHide(view: View) {
         view.visibility = View.INVISIBLE
@@ -148,9 +164,11 @@ private lateinit var pizza: Pizza
         adapter = ListSousAdapter()
         recycler.adapter = adapter
         recycler.layoutManager = StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL)
-        adapter.submitList(myViewModel.getList())
 
+        adapter.sizeType = Constants.SREDNAYA
+        adapter.submitList(pizza.getList())
     }
+
 
     fun onClickSmail() {
         binding.small.setOnClickListener {
@@ -163,8 +181,8 @@ private lateinit var pizza: Pizza
             binding.tonciy.isGone = true
             binding.classic.width = ViewGroup.LayoutParams.MATCH_PARENT
 
-
-            adapter.submitList(myViewModel.getList())
+            adapter.sizeType = Constants.MALENKAYA
+            adapter.submitList(pizza.getList())
         }
     }
 
@@ -175,7 +193,9 @@ private lateinit var pizza: Pizza
             binding.normal.setBackgroundResource(R.drawable.back_selcted)
             binding.tonciy.setBackgroundResource(R.drawable.back_selcted)
             binding.imageShowOder.setImageResource(R.drawable.ingridient_1)
-            adapter.submitList(myViewModel.getList())
+
+            adapter.sizeType = Constants.BOLSHAYA
+            adapter.submitList(pizza.getList())
             binding.tonciy.isGone = false
         }
     }
@@ -187,7 +207,9 @@ private lateinit var pizza: Pizza
             binding.normal.setBackgroundResource(R.drawable.background_select)
             binding.tonciy.setBackgroundResource(R.drawable.back_selcted)
             binding.imageShowOder.setImageResource(R.drawable.ingridient_12)
-            adapter.submitList(myViewModel.getList())
+
+            adapter.sizeType = Constants.SREDNAYA
+            adapter.submitList(pizza.getList())
             binding.tonciy.isGone = false
         }
     }
@@ -196,8 +218,12 @@ private lateinit var pizza: Pizza
         binding.tonciy.setOnClickListener {
             binding.tonciy.setBackgroundResource(R.drawable.background_select)
             binding.classic.setBackgroundResource(R.drawable.back_selcted)
-            adapter.submitList(myViewModel.getList())
+            adapter.submitList(pizza.getList())
+        }
+    }
 
+    fun onClickInfo() {
+        binding.info.setOnClickListener {
         }
     }
 
@@ -218,15 +244,72 @@ private lateinit var pizza: Pizza
             }
         }
     }
-    fun getAbout(){
 
-   binding.descriptionShowder.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+
+    private fun setupChip(): DeleteIngridientItemBinding {
+        val view = DeleteIngridientItemBinding.inflate(layoutInflater)
+        for (item in pizza.ingridientList!!.withIndex()) {
+            val chip = createChip(item.value.name)
+            chip.id = item.index
+            chip.setOnClickListener() {
+
+            }
+            if (view.chipGroup.contains(chip))
+                view.chipGroup.removeAllViews()
+            view.chipGroup.addView(chip)
+            chip.isChecked = !item.value.delete
+            pizza.ingridientList!!.map {
+                if (!it.delete) {
+                    chip.isGone
+                }
+            }
+
+            Log.d("MyERROR", "${chip.isChecked}")
+        }
+
+        view.chipGroup.setOnCheckedStateChangeListener { _, checkedIds ->
+            val size = binding.descriptionShowder.size
+            binding.descriptionShowder.removeAllViews()
+            for (i in 0 until size) {
+                val chip = createChiptext(pizza.ingridientList!![i].name)
+                chip.id = i
+
+                if (i !in checkedIds) {
+                    val spannable = SpannableString(chip.text)
+                    spannable.setSpan(
+                        StrikethroughSpan(),
+                        0,
+                        chip.text.length,
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                    chip.text =spannable
+                }
+
+                binding.descriptionShowder.addView(chip)
+            }
+        }
+        return view
+    }
+
+    private fun setupChipFurst() {
+        for (item in pizza.ingridientList!!.withIndex()) {
+            val chip = createChiptext(item.value.name)
+            chip.id = item.index
+            binding.descriptionShowder.addView(chip)
+        }
+    }
+
+    private fun createChiptext(category: String): TextView {
+        val textView = ChipTextItemBinding.inflate(layoutInflater).root
+        textView.text = category
+        return textView
+    }
+
+    private fun createChip(category: String): Chip {
+        val chip = ChipItemBinding.inflate(layoutInflater).root
+        chip.text = category
+        return chip
     }
 
 
 }
-
-
-
-
-

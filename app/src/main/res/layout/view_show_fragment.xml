@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent">
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
                 android:id="@+id/imageShowOder"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:scaleType="center"
+                android:scaleType="centerCrop"
                 android:src="@drawable/ingridient_4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -51,7 +51,7 @@
                 android:textColor="#7c7e82"
                 android:text="Средная 25cm, традиционное тесто, 440г"/>
 
-            <TextView
+            <com.google.android.material.chip.ChipGroup
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginHorizontal="10dp"
@@ -60,9 +60,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/description"
                 android:id="@+id/descriptionShowder"
-                android:textColor="#7c7e82"
-                android:text="Ite 1, Item 2, Item 3"
-                />
+
+                >
+
+            </com.google.android.material.chip.ChipGroup>
 
 <!--                android:text="Красный лук, соленые огурчики, томаты, соус бургер, ветчина халяль, сыр моцарелла"-->
 
@@ -179,6 +180,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+            <ImageView
+                android:id="@+id/info"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="28dp"
+                android:src="@drawable/baseline_info_24"
+                app:layout_constraintBottom_toTopOf="@+id/descriptionShowder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageShowOder" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

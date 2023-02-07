@@ -5,14 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import islom.din.dodo_ilmhona_proskills.Constants
+
 import islom.din.dodo_ilmhona_proskills.R
 import islom.din.dodo_ilmhona_proskills.data.Vkus
 import islom.din.dodo_ilmhona_proskills.databinding.ItemRecyclerSousViewBinding
 
 
-class ListSousAdapter : ListAdapter<Vkus, ListSousAdapter.SousViewHolder>(MyDiffUtil()) {
+class ListSousAdapter() : ListAdapter<Vkus, ListSousAdapter.SousViewHolder>(MyDiffUtil()) {
     var onClick: ((Int) -> Unit) = {}
+    var sizeType = Constants.MALENKAYA
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SousViewHolder {
         return SousViewHolder(
             LayoutInflater.from(parent.context)
@@ -21,10 +23,11 @@ class ListSousAdapter : ListAdapter<Vkus, ListSousAdapter.SousViewHolder>(MyDiff
     }
 
     override fun onBindViewHolder(holder: SousViewHolder, position: Int) {
-        holder.bindImage(getItem(position))
-        holder.bindText(getItem(position))
-        holder.bindSena(getItem(position))
-
+        holder.run {
+            bindImage(getItem(position))
+            bindText(getItem(position))
+            bindSena(getItem(position))
+        }
     }
 
     inner class SousViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -56,7 +59,7 @@ class ListSousAdapter : ListAdapter<Vkus, ListSousAdapter.SousViewHolder>(MyDiff
         }
 
         fun bindSena(vkus: Vkus) {
-            binding.sena.text = vkus.price[Constants.MALENKAYA].toString()
+            binding.sena.text = vkus.price?.get(sizeType).toString()
         }
 
         fun showHide(view: View) {
@@ -68,7 +71,7 @@ class ListSousAdapter : ListAdapter<Vkus, ListSousAdapter.SousViewHolder>(MyDiff
         }
 
         fun showChecked(vkus: Vkus) {
-            if (vkus.select) {
+            if (vkus.select == true) {
 
                 binding.begItem.setBackgroundResource(R.drawable.stoke_select.toInt())
             } else {

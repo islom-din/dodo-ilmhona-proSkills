@@ -5,15 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import islom.din.dodo_ilmhona_proskills.R
 import islom.din.dodo_ilmhona_proskills.databinding.FragmentHalfPizzaBinding
-import islom.din.dodo_ilmhona_proskills.databinding.ViewShowFragmentBinding
-import islom.din.dodo_ilmhona_proskills.view.ListSousAdapter
-import islom.din.dodo_ilmhona_proskills.view.ViewPager.ViewPagerAdapter
 import islom.din.dodo_ilmhona_proskills.viewModel.MyViewModel
 import kotlin.math.abs
 

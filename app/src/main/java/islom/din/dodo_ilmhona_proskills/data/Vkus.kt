@@ -10,5 +10,5 @@ data class Vkus(
     val name : String,
     val price : Map<String,Int>? = null,
     val available : Boolean? = true,
-    val select : Boolean? = false,
+    var select : Boolean? = false,
 ) : Parcelable
