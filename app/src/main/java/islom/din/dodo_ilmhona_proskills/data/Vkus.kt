@@ -8,7 +8,7 @@ data class Vkus(
     val id : Int,
     val image : Int,
     val name : String,
-    val price : Map<String,Int>,
-    val available : Boolean = true,
-    var select : Boolean = false,
+    val price : Map<String,Int>? = null,
+    val available : Boolean? = true,
+    val select : Boolean? = false,
 ) : Parcelable
