@@ -148,6 +148,7 @@
                         android:gravity="center">
 
                         <TextView
+                            android:id="@+id/vibor_dostavki"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -192,18 +193,14 @@
                 android:textStyle="bold"
                 app:layout_scrollFlags="scroll" />
 
-            <LinearLayout
-                android:id="@+id/category_c"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/interestingRV"
+                app:layout_scrollFlags="scroll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/super_low_mp"
-                app:layout_scrollFlags="scroll">
-
-                <include layout="@layout/recomendation_item" />
-
-                <include layout="@layout/recomendation_item" />
-
-            </LinearLayout>
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                tools:listitem="@layout/interesting_item"/>
 
             <HorizontalScrollView
                 android:id="@+id/category_container"

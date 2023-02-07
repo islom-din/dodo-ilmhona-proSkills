@@ -13,5 +13,11 @@ class Constants {
         const val MALENKAYA = "Маленькая"
         const val SREDNAYA = "Средняя"
         const val BOLSHAYA = "Большая"
+
+        const val DOSTAVKA = "На доставку"
+        const val ZAL = "В зале"
+
+        const val ADRESS_VIBOR = "Выбор адрес доставки"
+
     }
 }

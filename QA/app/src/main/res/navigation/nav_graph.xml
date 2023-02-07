@@ -3,13 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/navigation_home">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/navigation_home"
         android:name="islom.din.dodo_ilmhona_proskills.fragment.screens.HomeFragment"
         android:label="@string/menu"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/navigate_to_adress_dostavki_fragment"
+            app:destination="@id/adressDostavkiFragment" />
+        <argument android:name="dostavka_location"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_navigation_home_to_zalFragment"
+            app:destination="@id/zalFragment" />
+        <argument
+            android:name="zal_location"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_profile"
         android:name="islom.din.dodo_ilmhona_proskills.fragment.screens.ProfileFragment"
@@ -25,4 +39,32 @@
         android:name="islom.din.dodo_ilmhona_proskills.fragment.screens.BasketFragment"
         android:label="@string/basket"
         tools:layout="@layout/fragment_basket"/>
+    <fragment
+        android:id="@+id/adressDostavkiFragment"
+        android:name="islom.din.dodo_ilmhona_proskills.fragment.AdressDostavkiFragment"
+        android:label="fragment_adress_dostavki"
+        tools:layout="@layout/fragment_adress_dostavki" >
+        <action
+            android:id="@+id/navate_to_home_fragment_from_adress"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/zalFragment"
+        android:name="islom.din.dodo_ilmhona_proskills.fragment.ZalFragment"
+        android:label="ZalFragment" >
+        <action
+            android:id="@+id/action_zalFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="islom.din.dodo_ilmhona_proskills.fragment.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

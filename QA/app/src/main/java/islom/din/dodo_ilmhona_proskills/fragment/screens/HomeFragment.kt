@@ -5,21 +5,24 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ScrollView
+import androidx.core.graphics.createBitmap
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavArgs
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.chip.Chip
 import islom.din.dodo_ilmhona_proskills.Constants
 import islom.din.dodo_ilmhona_proskills.R
+import islom.din.dodo_ilmhona_proskills.adapter.InterestingAdapter
 import islom.din.dodo_ilmhona_proskills.adapter.PizzaAdapter
-import islom.din.dodo_ilmhona_proskills.data.Pizza
 import islom.din.dodo_ilmhona_proskills.databinding.ChipItemBinding
 import islom.din.dodo_ilmhona_proskills.databinding.FragmentHomeBinding
 import islom.din.dodo_ilmhona_proskills.viewmodel.HomeViewModel
-import kotlinx.coroutines.CoroutineScope
 
 class HomeFragment : Fragment() {
     //binding
@@ -27,9 +30,11 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     //View Model
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: HomeViewModel by activityViewModels()
 
-    private lateinit var adapterForPizza : PizzaAdapter
+    private val args : HomeFragmentArgs by navArgs()
+
+    private lateinit var adapterForPizza: PizzaAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -42,11 +47,15 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Making Bottom Nav View Visible
+        var bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_nav_view)
+        if (!viewModel.hideBottomNavView)
+            bottomNavigationView.visibility = View.VISIBLE
 
         // Pizza recycler view initialising and setting adapter and list for it
         adapterForPizza = PizzaAdapter { pizza ->
 
-                //Here should be written logic for navigation to another fragment
+            //Here should be written logic for navigation to another fragment
 //            navigateToShowFragment(pizza)
         }
         adapterForPizza.submitList(viewModel.pizzaList)
@@ -56,14 +65,22 @@ class HomeFragment : Fragment() {
         //Creating all categories programmatically
         setupChip()
         scrollingOnCategoryClicked()
-        chooseCity()
+        chooseOrderType()
         scrollingChangeListener()
         settingPizzaRecyclerView()
+        setupInterestingRecyclerView()
+
 
 
         // Not used, but alternatively method for Category RecyclerView
 //        settingCategoryRecyclerView()
 
+    }
+
+    private fun setupInterestingRecyclerView() {
+        val adapter = InterestingAdapter()
+        adapter.submitList(viewModel.interestingList())
+        binding.interestingRV.adapter = adapter
     }
 
 //    private fun navigateToShowFragment(pizza: Pizza) {
@@ -113,26 +130,27 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun chooseCity() {
-        val naDostavkuButton = binding.naDostavku
-        val vZaleButton = binding.vZale
-
-        //For default
-        naDostavkuButton.setBackgroundResource(R.drawable.shape_chip_white)
-
-        //What should happen if I click "V zale" button
-        vZaleButton.setOnClickListener {
-            it.setBackgroundResource(R.drawable.shape_chip_white)
-            naDostavkuButton.setBackgroundResource(R.drawable.shape_chip_grey)
+    private fun chooseOrderType() {
+        viewModel.orderStreet.observe(requireActivity()) {
+            if (viewModel.orderStreet.value == Constants.DOSTAVKA) {
+                binding.naDostavku.setBackgroundResource(R.drawable.shape_chip_white)
+                binding.vZale.setBackgroundResource(R.drawable.shape_chip_grey)
+            }else if (viewModel.orderStreet.value == Constants.ZAL){
+                binding.vZale.setBackgroundResource(R.drawable.shape_chip_white)
+                binding.naDostavku.setBackgroundResource(R.drawable.shape_chip_grey)
+            }
         }
 
-        //What should happen if I click "Dostavka" button
-        naDostavkuButton.setOnClickListener {
-            it.setBackgroundResource(R.drawable.shape_chip_white)
-            vZaleButton.setBackgroundResource(R.drawable.shape_chip_grey)
-        }
+            //What should happen if I click "V zale" button
+        binding.vZale.setOnClickListener {
+                viewModel.changeOrderType(Constants.ZAL)
+            }
 
-    }
+            //What should happen if I click "Dostavka" button
+        binding.naDostavku.setOnClickListener {
+                    viewModel.changeOrderType(Constants.DOSTAVKA)
+            }
+        }
 
     private fun settingPizzaRecyclerView() {
         // Pizza recycler view initialising and setting adapter and list for it

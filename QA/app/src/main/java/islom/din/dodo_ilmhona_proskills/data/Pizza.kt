@@ -22,6 +22,9 @@ data class Pizza (
     fun formatPrice(): String {
         return "$price TJS"
     }
+    fun formatPriceFrom() : String {
+        return "от $price TJS"
+    }
 
     fun formatLitr() : String {
         return "$price л"

@@ -1,10 +1,12 @@
 package islom.din.dodo_ilmhona_proskills.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import islom.din.dodo_ilmhona_proskills.Constants
-import islom.din.dodo_ilmhona_proskills.data.Category
-import islom.din.dodo_ilmhona_proskills.repository.GetCategoryList
+import islom.din.dodo_ilmhona_proskills.data.Pizza
 import islom.din.dodo_ilmhona_proskills.repository.GetPizzaList
+import kotlin.random.Random
 
 class HomeViewModel : ViewModel() {
 
@@ -14,6 +16,25 @@ class HomeViewModel : ViewModel() {
     // Getting pizza list from repository for pizza recycler view in home fragment
     var pizzaList = GetPizzaList().getList()
 
+    var hideBottomNavView = true
+
+    private var _orderType = MutableLiveData(Constants.DOSTAVKA)
+    val orderStreet : LiveData<String> get() = _orderType
+
+    fun changeOrderType(type : String){
+        _orderType.value = type
+    }
+
+    fun interestingList() : List<Pizza> {
+        val newList = mutableListOf<Pizza>()
+
+        for (pizza in 0..9) {
+            var randomPizza = Random.nextInt(0,pizzaList.size)
+            newList.add(pizzaList[randomPizza])
+        }
+
+        return newList
+    }
 
     val categoryList =
         arrayListOf(
