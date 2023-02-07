@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/medium_mp"
+    app:cardElevation="3dp"
+    app:cardCornerRadius="@dimen/medium_mp"
+    >
+
+    <LinearLayout
+        android:paddingHorizontal="@dimen/medium_mp"
+        android:paddingVertical="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/pizza_image"
+            android:src="@raw/img_1"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"/>
+
+        <TextView
+            android:id="@+id/pizza_name"
+            android:textColor="@color/black"
+            android:text="Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/pizza_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="Горячая закуска с цыплёнком, перцем халапенью, солеными огурчиками, томатами, моцареллой, и соусом барбекю в тонкой пшеничной лепешке"/>
+
+        <TextView
+            android:layout_gravity="end"
+            android:background="@drawable/shape_price"
+            android:id="@+id/picca_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_mp"
+            android:paddingVertical="5dp"
+            android:paddingHorizontal="@dimen/high_mp"
+            android:text="106 TJS"
+            android:textColor="@color/secondaryDarkColor"
+            android:textSize="16sp"
+            />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

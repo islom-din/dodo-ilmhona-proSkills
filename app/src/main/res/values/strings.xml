@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">dodo-ilmhona-proSkills</string>
+    <string name="menu">Меню</string>
+    <string name="profile">Профиль</string>
+    <string name="contact">Контакты</string>
+    <string name="basket">Корзина</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="combo">Комбо</string>
+    <string name="pizza">Пицца</string>
+    <string name="zakuski">Закуски</string>
+    <string name="deserti">Десерты</string>
+    <string name="napitki">Напитки</string>
+    <string name="sousi">Соусы</string>
+    <string name="drugie_tovari">Другие товары</string>
+    <string name="v_zale">В зале</string>
+    <string name="na_dostavku">На доставку</string>
+    <string name="vibor_adres_dostavki">Выбор адреc доставки</string>
+    <string name="dodo">Додо</string>
+    <string name="text_for_pizza_item">2 пиццы 25 см и напиток на выбор. Для компании из 2-4 человек</string>
+    <string name="pizza_item_title">2 пиццы и напиток</string>
+    <string name="dushanbe">Душанбе</string>
 </resources>
