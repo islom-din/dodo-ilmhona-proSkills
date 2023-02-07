@@ -9,26 +9,24 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import islom.din.dodo_ilmhona_proskills.R
 import islom.din.dodo_ilmhona_proskills.databinding.ComboDezignBinding
-import islom.din.dodo_ilmhona_proskills.databinding.ItemRecyclerSousViewBinding
-import islom.din.dodo_ilmhona_proskills.model.ChangeData
+import islom.din.dodo_ilmhona_proskills.model.Pizza
 
-class ChangeAdapter:ListAdapter<ChangeData,ChangeAdapter.ChangeViewHolder>(ChangDiffutils()) {
-    var onClickItem:((ChangeData)->Unit)? = null
+class ChangeAdapter:ListAdapter<Pizza,ChangeAdapter.ChangeViewHolder>(ChangDiffutils()) {
+    var onClickItem:((Pizza, Int)->Unit)? = null
 
     inner class ChangeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ComboDezignBinding.bind(itemView)
 
         init {
             binding.root.setOnClickListener {
-                onClickItem?.invoke(getItem(adapterPosition))
+                onClickItem?.invoke(getItem(adapterPosition), adapterPosition)
             }
         }
 
-        fun bind(changeData: ChangeData){
-            binding.changeButton.text =changeData.button
-            binding.imageComboDezign.setImageResource(changeData.img)
-            binding.nameComboDezign.text = changeData.name
-            binding.descriptionComboDezig.text = changeData.description
+        fun bind(pizza: Pizza){
+            binding.imageComboDezign.setImageResource(pizza.image)
+            binding.nameComboDezign.text = pizza.name
+            binding.descriptionComboDezig.text = pizza.name
         }
     }
 
@@ -42,8 +40,8 @@ class ChangeAdapter:ListAdapter<ChangeData,ChangeAdapter.ChangeViewHolder>(Chang
     }
 }
 
-class ChangDiffutils :DiffUtil.ItemCallback<ChangeData>() {
-    override fun areItemsTheSame(oldItem: ChangeData, newItem: ChangeData):Boolean =  oldItem.id == newItem.id
+class ChangDiffutils :DiffUtil.ItemCallback<Pizza>() {
+    override fun areItemsTheSame(oldItem: Pizza, newItem: Pizza):Boolean =  oldItem.id == newItem.id
     @SuppressLint("DiffUtilEquals")
-    override fun areContentsTheSame(oldItem: ChangeData, newItem: ChangeData): Boolean =  oldItem == newItem
+    override fun areContentsTheSame(oldItem: Pizza, newItem: Pizza): Boolean =  oldItem == newItem
 }

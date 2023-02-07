@@ -4,19 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import islom.din.dodo_ilmhona_proskills.databinding.FragmentComboBinding
-import islom.din.dodo_ilmhona_proskills.model.ChangeData
+import islom.din.dodo_ilmhona_proskills.model.DataViewModel
+import islom.din.dodo_ilmhona_proskills.model.Pizza
 import islom.din.dodo_ilmhona_proskills.view.ChangeAdapter
 
 class ComboFragment : Fragment() {
     lateinit var adapter: ChangeAdapter
     lateinit var rcView: RecyclerView
     private var fragmentComboBinding: FragmentComboBinding? = null
-    override fun onCreateView(
 
+    override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
@@ -25,31 +29,34 @@ class ComboFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         val binding = view.let { FragmentComboBinding.bind(it) }
         fragmentComboBinding = binding
         rcView = view.findViewById(R.id.recycleViewCombo)
         adapter = ChangeAdapter()
-
         rcView.adapter = adapter
         rcView.layoutManager = LinearLayoutManager(context)
 
-        val list = mutableListOf(
-            ChangeData(1, R.drawable.pizza, "Piperni", "asdasdasdasd"),
-            ChangeData(2, R.drawable.pizza, "Piperni", "asdasdasdasd"),
-            ChangeData(3, R.drawable.pizza, "Piperni", "asdasdasdasd"),
-        )
-        adapter.submitList(list)
+        val viewModel = ViewModelProvider(requireActivity())[DataViewModel::class.java]
 
-        adapter.onClickItem = {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .add(R.id.frame_layout, FragmetSelectPizza.newInstance()).commit()
+        binding.descriptionComboFragment.text = ""
+        viewModel.list.forEach {
+            binding.descriptionComboFragment.text = binding.descriptionComboFragment.text.toString() + it.name
+        }
+
+        adapter.onClickItem = { pizza, pos ->
+            viewModel.choosePizzaPosition = pos
+            val action = ComboFragmentDirections.actionComboFragmentToFragmetSelectPizza(pizza)
+            (requireActivity().supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment)
+                .navController.navigate(action)
+        }
+
+        viewModel.pizza.observe(viewLifecycleOwner) { listOfPizza ->
+            adapter.submitList(listOfPizza)
         }
     }
 
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = ComboFragment()
+    override fun onDestroyView() {
+        fragmentComboBinding = null
+        super.onDestroyView()
     }
 }

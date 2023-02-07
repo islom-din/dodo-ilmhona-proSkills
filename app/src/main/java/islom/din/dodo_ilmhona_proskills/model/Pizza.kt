@@ -1,8 +1,7 @@
-package islom.din.dodo_ilmhona_proskills.data
+package islom.din.dodo_ilmhona_proskills.model
 
 import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-
+import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Pizza (
@@ -13,9 +12,8 @@ data class Pizza (
     val price : Int,
     val category : String,
     val main : Boolean = false,
-    val pizzasSizaPrise : Array<Int>? = null
-) : Parcelable {
-    fun formatPrice(): String {
-        return "$price TJS"
-    }
-}
+    val pizzasSizaPrise : Array<Int>? = null,
+    val litrArray : Array<Double>? = null,
+    val shtuk : Int? = null,
+    val arrayCategory: Array<String>? = null,
+        ) : Parcelable

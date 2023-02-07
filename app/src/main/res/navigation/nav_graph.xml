@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/comboFragment">
+    <fragment
+        android:id="@+id/fragmetSelectPizza"
+        android:name="islom.din.dodo_ilmhona_proskills.FragmetSelectPizza"
+        android:label="fragment_fragmet_select_pizza"
+        tools:layout="@layout/fragment_fragmet_select_pizza" >
+        <argument
+            android:name="pizza"
+            app:argType="islom.din.dodo_ilmhona_proskills.model.Pizza" />
+    </fragment>
+    <fragment
+        android:id="@+id/comboFragment"
+        android:name="islom.din.dodo_ilmhona_proskills.ComboFragment"
+        android:label="fragment_combo"
+        tools:layout="@layout/fragment_combo" >
+        <action
+            android:id="@+id/action_comboFragment_to_fragmetSelectPizza"
+            app:destination="@id/fragmetSelectPizza" />
+    </fragment>
+</navigation>

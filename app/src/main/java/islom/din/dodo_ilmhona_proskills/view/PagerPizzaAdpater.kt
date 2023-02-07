@@ -9,19 +9,34 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import islom.din.dodo_ilmhona_proskills.R
 import islom.din.dodo_ilmhona_proskills.databinding.PagerPizzaBinding
-import islom.din.dodo_ilmhona_proskills.model.ChangeData
+import islom.din.dodo_ilmhona_proskills.model.Pizza
 
-class PagerPizzaAdpater:ListAdapter<ChangeData,PagerPizzaAdpater.PagerViewHolder>(PagerDiffutils()) {
+class PagerPizzaAdpater : ListAdapter<Pizza, PagerPizzaAdpater.PagerViewHolder>(
+    object : DiffUtil.ItemCallback<Pizza>() {
+        override fun areItemsTheSame(oldItem: Pizza, newItem: Pizza): Boolean =
+            oldItem.id == newItem.id
 
-    class PagerViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
-        val binding = PagerPizzaBinding.bind(itemView)
-        fun bind(changeData: ChangeData){
-            binding.description.text = changeData.description
-            binding.image.setImageResource(changeData.img)
+        @SuppressLint("DiffUtilEquals")
+        override fun areContentsTheSame(oldItem: Pizza, newItem: Pizza): Boolean =
+            oldItem == newItem
+    }
+) {
+
+    var onSelectItem: ((Pizza) -> (Unit))? = null
+
+    inner class PagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val binding = PagerPizzaBinding.bind(itemView)
+        fun bind(changeData: Pizza) {
+            binding.description.text = changeData.about
+            binding.image.setImageResource(changeData.image)
             binding.name.text = changeData.name
-
         }
 
+        init {
+            binding.root.setOnClickListener {
+                onSelectItem?.invoke(getItem(adapterPosition))
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolder {
@@ -31,10 +46,4 @@ class PagerPizzaAdpater:ListAdapter<ChangeData,PagerPizzaAdpater.PagerViewHolder
     override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
-}
-
-class PagerDiffutils :DiffUtil.ItemCallback<ChangeData>() {
-    override fun areItemsTheSame(oldItem: ChangeData, newItem: ChangeData):Boolean =  oldItem.id == newItem.id
-    @SuppressLint("DiffUtilEquals")
-    override fun areContentsTheSame(oldItem: ChangeData, newItem: ChangeData): Boolean =  oldItem == newItem
 }

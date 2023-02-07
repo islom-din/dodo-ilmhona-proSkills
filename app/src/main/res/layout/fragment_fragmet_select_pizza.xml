@@ -7,12 +7,22 @@
     android:background="@drawable/back"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="20dp"
+    android:paddingVertical="48dp"
     tools:context=".FragmetSelectPizza">
 
-
-    <androidx.recyclerview.widget.RecyclerView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/numberPosition"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="ss"
+        app:layout_constraintBottom_toTopOf="@id/recyaclePager"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:id="@+id/recyaclePager"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
