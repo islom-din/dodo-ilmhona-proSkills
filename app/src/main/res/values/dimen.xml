@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="super_low_mp">5dp</dimen>
+    <dimen name="low_mp">10dp</dimen>
+    <dimen name="medium_mp">15dp</dimen>
+    <dimen name="high_mp">20dp</dimen>
+</resources>
