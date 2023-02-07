@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
 import com.genius.multiprogressbar.MultiProgressBar
+import islom.din.dodo_ilmhona_proskills.R
 import islom.din.dodo_ilmhona_proskills.databinding.FragmentStoryItemBinding
 import islom.din.dodo_ilmhona_proskills.shodmon.khushbakht.viewmodel.MyViewModel
 
@@ -33,10 +36,18 @@ class StoryItemFragment : Fragment(), MultiProgressBar.ProgressStepChangeListene
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.storyProgressBar.setSingleDisplayTime(10f)
-        binding.storyProgressBar.setProgressStepsCount(6)
+        binding.storyProgressBar.setSingleDisplayTime(5f)
+        binding.storyProgressBar.setProgressStepsCount(myViewModel.getImageData().size)
         binding.storyProgressBar.setListener(this)
         binding.storyProgressBar.setFinishListener(this)
+
+
+        binding.leftView.setOnClickListener {
+            binding.storyProgressBar.previous()
+        }
+        binding.rightView.setOnClickListener {
+            binding.storyProgressBar.next()
+        }
 
 
     }
@@ -45,6 +56,11 @@ class StoryItemFragment : Fragment(), MultiProgressBar.ProgressStepChangeListene
         super.onStart()
         binding.storyProgressBar.start()
 
+    }
+
+    override fun onResume() {
+        binding.storyProgressBar.start()
+        super.onResume()
     }
 
 
@@ -57,15 +73,19 @@ class StoryItemFragment : Fragment(), MultiProgressBar.ProgressStepChangeListene
     override fun onProgressStepChange(newStep: Int) {
         Log.d("TESTING","New step --> $newStep")
 
-//        var image = myViewModel.getImageData()[newStep].Image
-//
-//        Glide.with(binding.root)
-//            .load(image)
-//            .into(binding.image)
+        var image = myViewModel.getImageData()[newStep].Image
+
+        Glide.with(binding.root)
+            .load(image)
+            .into(binding.image)
     }
 
     override fun onProgressFinished() {
         Log.d("TESTING", "onProgressFinished: ")
+
+        val pager = requireActivity().findViewById<ViewPager2>(R.id.view_pager)
+        pager.currentItem +=1
+
 
     }
 
