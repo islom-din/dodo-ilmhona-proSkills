@@ -38,9 +38,10 @@ class ComboFragment : Fragment() {
 
         val viewModel = ViewModelProvider(requireActivity())[DataViewModel::class.java]
 
-        binding.descriptionComboFragment.text = ""
+
         viewModel.list.forEach {
-            binding.descriptionComboFragment.text = binding.descriptionComboFragment.text.toString() + it.name
+            binding.descriptionComboFragment.text = viewModel.combo.about
+            binding.nameCombo.text = viewModel.combo.name
         }
 
         adapter.onClickItem = { pizza, pos ->

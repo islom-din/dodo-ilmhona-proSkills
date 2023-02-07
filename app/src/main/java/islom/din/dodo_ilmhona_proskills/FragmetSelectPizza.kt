@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import islom.din.dodo_ilmhona_proskills.databinding.FragmentFragmetSelectPizzaBinding
 import islom.din.dodo_ilmhona_proskills.model.Constants
 import islom.din.dodo_ilmhona_proskills.model.DataViewModel
@@ -36,10 +38,12 @@ class FragmetSelectPizza : Fragment() {
         val binding = view.let { FragmentFragmetSelectPizzaBinding.bind(it) }
 
         val viewModel = ViewModelProvider(requireActivity())[DataViewModel::class.java]
-
+       binding.recyaclePager.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         binding.recyaclePager.adapter = adapter
 
-        adapter.onSelectItem = {
+
+
+      adapter.onSelectItem = {
             viewModel.pizzaChanged(it)
             (requireActivity().supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment)
                 .navController.navigateUp()
@@ -60,8 +64,6 @@ class FragmetSelectPizza : Fragment() {
                 list = MyViewModel().Zakuski()
             Constants.DESERTI ->
                 list = MyViewModel().Desert()
-
-
         }
 
         adapter.submitList(list)

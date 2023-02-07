@@ -1,15 +1,22 @@
 package islom.din.dodo_ilmhona_proskills.view
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.PagerAdapter
 import islom.din.dodo_ilmhona_proskills.R
 import islom.din.dodo_ilmhona_proskills.databinding.PagerPizzaBinding
 import islom.din.dodo_ilmhona_proskills.model.Pizza
+
+
+
 
 class PagerPizzaAdpater : ListAdapter<Pizza, PagerPizzaAdpater.PagerViewHolder>(
     object : DiffUtil.ItemCallback<Pizza>() {
@@ -47,3 +54,4 @@ class PagerPizzaAdpater : ListAdapter<Pizza, PagerPizzaAdpater.PagerViewHolder>(
         holder.bind(getItem(position))
     }
 }
+

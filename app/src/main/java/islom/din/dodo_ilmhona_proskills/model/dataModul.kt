@@ -6,13 +6,14 @@ import islom.din.dodo_ilmhona_proskills.R
 
 class DataViewModel : ViewModel() {
     val pizza = MutableLiveData<List<Pizza>>()
-
+    lateinit var combo :Pizza
     var list = mutableListOf<Pizza>()
     var choosePizzaPosition = -1
 
     init {
         list = mutableListOf()
-        val combo = Pizza(
+
+         combo = Pizza(
             25,
             R.raw.img_25,
             "2 пиццы и напиток",
@@ -23,7 +24,7 @@ class DataViewModel : ViewModel() {
         )
 
         if (combo.arrayCategory != null)
-            for (i in combo.arrayCategory) {
+            for (i in combo.arrayCategory!!) {
                 if (i == Constants.PIZZA) {
                     (list.add(
                         Pizza(
@@ -88,6 +89,8 @@ class DataViewModel : ViewModel() {
         pizza.postValue(list)
     }
 
+
+
     fun pizzaChanged(p: Pizza) {
         val changedList = mutableListOf<Pizza>()
 
@@ -104,4 +107,5 @@ class DataViewModel : ViewModel() {
 
         pizza.postValue(changedList)
     }
+
 }
