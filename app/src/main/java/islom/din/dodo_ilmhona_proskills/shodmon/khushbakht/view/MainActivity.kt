@@ -3,7 +3,7 @@ package islom.din.dodo_ilmhona_proskills.shodmon.khushbakht.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import islom.din.dodo_ilmhona_proskills.R
-import islom.din.dodo_ilmhona_proskills.behruz.StoryFragment
+import islom.din.dodo_ilmhona_proskills.shodmon.bekhruz.StoryFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

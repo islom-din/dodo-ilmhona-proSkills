@@ -1,16 +1,13 @@
-package islom.din.dodo_ilmhona_proskills.behruz
+package islom.din.dodo_ilmhona_proskills.shodmon.bekhruz
 
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.bumptech.glide.Glide
 import com.genius.multiprogressbar.MultiProgressBar
-import islom.din.dodo_ilmhona_proskills.databinding.FragmentStoryBinding
 import islom.din.dodo_ilmhona_proskills.databinding.FragmentStoryItemBinding
 import islom.din.dodo_ilmhona_proskills.shodmon.khushbakht.viewmodel.MyViewModel
 

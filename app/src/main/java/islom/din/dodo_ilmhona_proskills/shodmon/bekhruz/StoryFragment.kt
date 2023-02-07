@@ -1,4 +1,4 @@
-package islom.din.dodo_ilmhona_proskills.behruz
+package islom.din.dodo_ilmhona_proskills.shodmon.bekhruz
 
 import android.os.Bundle
 
