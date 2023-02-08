@@ -11,85 +11,85 @@
 
 
 
+    <LinearLayout
+        android:id="@+id/linearLayout_continer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/imageSous"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="5dp"
+
+            android:contentDescription="TODO"
+            android:padding="10dp"
+            android:src="@drawable/ingridient_4"
+            app:shapeAppearance="@style/shape_img" />
+
+        <TextView
+            android:id="@+id/sous_name"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="1dp"
+            android:lines="2"
+            android:text="Namee"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
         <LinearLayout
-            android:id="@+id/linearLayout_continer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-
-            <ImageView
-                android:id="@+id/imageSous"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginEnd="5dp"
-
-                android:contentDescription="TODO"
-                android:padding="10dp"
-                android:src="@drawable/ingridient_4"
-                app:shapeAppearance="@style/shape_img" />
+            android:layout_gravity="center_horizontal">
 
             <TextView
-                android:id="@+id/sous_name"
-                style="@style/TextAppearance.AppCompat.Large"
-                android:layout_width="90dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="1dp"
-                android:lines="2"
-                android:text="Namee"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-            <LinearLayout
+                android:id="@+id/sena"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:text="22"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/sena"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="5dp"
-                    android:text="22"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="TJS"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="TJS"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/select_image"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="end"
-            android:layout_marginTop="11dp"
-            android:layout_marginEnd="11dp"
-            android:src="@drawable/baseline_check_circle_outline_24"
-            android:visibility="invisible"
-            app:layout_constraintTop_toTopOf="parent" />
-   <View
-       android:id="@+id/seconClock"
-       android:layout_width="110dp"
-       android:layout_height="160dp"
-       android:visibility="invisible"
-/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/select_image"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="11dp"
+        android:src="@drawable/baseline_check_circle_outline_24"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent" />
+    <View
+        android:id="@+id/seconClock"
+        android:layout_width="110dp"
+        android:layout_height="160dp"
+        android:visibility="invisible"
+        />
 
 </androidx.cardview.widget.CardView>

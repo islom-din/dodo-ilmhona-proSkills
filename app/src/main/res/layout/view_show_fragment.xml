@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".view.ShowFragment">
+
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
@@ -22,14 +24,15 @@
                 android:id="@+id/imageShowOder"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
+                android:padding="50dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ingridient_4"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 />
 
             <TextView
-
                 android:id="@+id/nameShowder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,6 +44,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageShowOder" />
 
+
             <TextView
                 android:layout_marginHorizontal="10dp"
                 android:layout_width="wrap_content"
@@ -51,7 +55,9 @@
                 android:textColor="#7c7e82"
                 android:text="Средная 25cm, традиционное тесто, 440г"/>
 
+
             <com.google.android.material.chip.ChipGroup
+
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginHorizontal="10dp"
@@ -59,9 +65,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/description"
-                android:id="@+id/descriptionShowder"
-
-                >
+                android:id="@+id/descriptionShowder"    >
 
             </com.google.android.material.chip.ChipGroup>
 
@@ -80,11 +84,13 @@
                 app:layout_constraintStart_toStartOf="@id/descriptionShowder"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionShowder" />
 
+
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
+
                 android:layout_marginVertical="4dp"
                 android:background="@drawable/back_selcted"
                 android:padding="4dp"
@@ -104,29 +110,40 @@
                     android:text="маленькая"
                     android:textColor="@color/black" />
 
+
                 <TextView
                     android:id="@+id/normal"
+                    android:gravity="center"
+                    android:background="@drawable/background_select"
+                    android:textColor="@color/black"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="4dp"
                     android:layout_weight="1"
-                    android:background="@drawable/background_select"
-                    android:gravity="center"
+
+
                     android:padding="8dp"
                     android:text="средняя"
-                    android:textColor="@color/black" />
+                   />
+
+
 
                 <TextView
                     android:id="@+id/big"
+                    android:gravity="center"
+                    android:background="@drawable/back_selcted"
+                    android:textColor="@color/black"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="4dp"
                     android:layout_weight="1"
-                    android:background="@drawable/back_selcted"
-                    android:gravity="center"
+
                     android:padding="8dp"
                     android:text="Большая"
-                    android:textColor="@color/black" />
+                     />
+
             </LinearLayout>
 
 
@@ -181,6 +198,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
+
             <ImageView
                 android:id="@+id/info"
                 android:layout_width="30dp"
@@ -190,6 +208,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/descriptionShowder"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageShowOder" />
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

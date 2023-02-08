@@ -87,4 +87,3 @@ class ListSousAdapter() : ListAdapter<Vkus, ListSousAdapter.SousViewHolder>(MyDi
 
 
 
-

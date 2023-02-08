@@ -1,7 +1,5 @@
 package islom.din.dodo_ilmhona_proskills.view
 
-import android.accessibilityservice.GestureDescription.StrokeDescription
-import android.graphics.Paint
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -11,12 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.view.contains
-import androidx.core.view.get
 import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.core.view.size
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -29,16 +27,17 @@ import islom.din.dodo_ilmhona_proskills.databinding.ChipItemBinding
 import islom.din.dodo_ilmhona_proskills.databinding.ChipTextItemBinding
 import islom.din.dodo_ilmhona_proskills.databinding.DeleteIngridientItemBinding
 import islom.din.dodo_ilmhona_proskills.databinding.ViewShowFragmentBinding
-import islom.din.dodo_ilmhona_proskills.repository.GetVkusList
-import islom.din.dodo_ilmhona_proskills.view.half.FragmentHalfPizza
+import islom.din.dodo_ilmhona_proskills.model.DataViewModel
 
 
 private const val ARG_PARAM1 = "param1"
-private lateinit var pizza: Pizza
+
 
 class ShowFragment : Fragment() {
 
+    private lateinit var pizza: Pizza
 
+    //lateinit var catrgoty:Constants
     private var _binding: ViewShowFragmentBinding? = null
     lateinit var recycler: RecyclerView
     lateinit var adapter: ListSousAdapter
@@ -68,60 +67,64 @@ class ShowFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = view.let { ViewShowFragmentBinding.bind(it) }
+
+        when (pizza.category) {
+            Constants.PIZZA -> {
+                binding.removeIngrelienites.setOnClickListener {
+                    val view = setupChip()
+                    MaterialAlertDialogBuilder(requireContext())
+                        .setPositiveButton("DONE") { dialog, which ->
+                            Log.d("MyERROR", "${pizza.ingridientList}")
+                            for (ingrident in pizza.ingridientList!!.withIndex())
+                                if (ingrident.index !in view.chipGroup.checkedChipIds)
+                                    pizza.ingridientList!![ingrident.index].delete = true
+                            Log.d("MyERROR", "${pizza.ingridientList}")
+                            dialog.dismiss()
+
+                        }
+                        .setNeutralButton("CLEAR") { dialog, which ->
+
+                            dialog.dismiss()
+                        }
+                        .setView(view.root)
+                        .show()
+                }
+                binding.nameShowder.setOnClickListener {
+                    val view = setupChip()
+                    MaterialAlertDialogBuilder(requireContext())
+                        .setTitle("Убрать ингридиенты")
+
+                        .setPositiveButton("ГОТОВО") { dialog, which: Int ->
+                            dialog.dismiss()
+
+                        }
+                        .setNegativeButton("Сбросить") { dialog, which: Int ->
+                            dialog.cancel()
+                        }
+                        .setView(view.root)
+                        .show()
+                }
+                setupChipFurst()
+                getRecycler()
+                onClickSmail()
+                onClickBig()
+                onClickNormal()
+                onClickType()
+            }
+            else -> {
+                binding.apply {
+                    recSous.visibility = View.INVISIBLE
+                    linearLayout.visibility = View.INVISIBLE
+                    removeIngrelienites.visibility = View.INVISIBLE
+                    if(pizza.category == Constants.DESERTI)
+                        linearLayout2.visibility = View.INVISIBLE
+                }
+            }
+        }
+
         binding.imageShowOder.setImageResource(pizza.image)
         binding.nameShowder.text = pizza.name
         binding.description.text = pizza.name
-        binding.classic.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .add(
-                    R.id.frame_layout, FragmentHalfPizza.newInstance()
-                ).commit()
-
-
-        }
-        setupChipFurst()
-        binding.nameShowder.setOnClickListener {
-            val view = setupChip()
-            MaterialAlertDialogBuilder(requireContext())
-                .setTitle("Убрать ингридиенты")
-
-                .setPositiveButton("ГОТОВО") { dialog, which: Int ->
-                    dialog.dismiss()
-
-                }
-                .setNegativeButton("Сбросить") { dialog, which: Int ->
-                    dialog.cancel()
-                }
-                .setView(view.root)
-                .show()
-        }
-
-        binding.removeIngrelienites.setOnClickListener {
-            val view = setupChip()
-            MaterialAlertDialogBuilder(requireContext())
-                .setPositiveButton("DONE") { dialog, which ->
-                    Log.d("MyERROR", "${pizza.ingridientList}")
-                    for (ingrident in pizza.ingridientList!!.withIndex())
-                        if (ingrident.index !in view.chipGroup.checkedChipIds)
-                            pizza.ingridientList!![ingrident.index].delete = true
-                    Log.d("MyERROR", "${pizza.ingridientList}")
-                    dialog.dismiss()
-
-                }
-                .setNeutralButton("CLEAR") { dialog, which ->
-
-                    dialog.dismiss()
-                }
-                .setView(view.root)
-                .show()
-        }
-        getRecycler()
-        onClickSmail()
-        onClickBig()
-        onClickNormal()
-        onClickType()
-        getSelectItem()
-
     }
 
     override fun onDestroyView() {
@@ -138,24 +141,6 @@ class ShowFragment : Fragment() {
 
                 }
             }
-
-    }
-
-    /*  private fun setupChip(): DeleteIngridientItemBinding {
-          //TODO: get ingridients from array
-          // 1) Save them in liveData, this liveData will be saved in ViewModel
-          val deleteIngridient: String = pizza.ingridientList?.map { it.name.toString() }.toString()
-          var dialogBinding = DeleteIngridientItemBinding.inflate(requireActivity().layoutInflater)
-          for (name in deleteIngridient) {
-              val chip = createChip(name.toString())
-              dialogBinding.chipGroup.addView(chip)
-          }
-          return dialogBinding
-      }*/
-
-
-    fun showHide(view: View) {
-        view.visibility = View.INVISIBLE
 
     }
 
@@ -180,9 +165,9 @@ class ShowFragment : Fragment() {
             binding.imageShowOder.setImageResource(R.drawable.ingridient_12)
             binding.tonciy.isGone = true
             binding.classic.width = ViewGroup.LayoutParams.MATCH_PARENT
-
             adapter.sizeType = Constants.MALENKAYA
-            adapter.submitList(pizza.getList())
+            seleltList()
+
         }
     }
 
@@ -197,6 +182,7 @@ class ShowFragment : Fragment() {
             adapter.sizeType = Constants.BOLSHAYA
             adapter.submitList(pizza.getList())
             binding.tonciy.isGone = false
+            seleltList()
         }
     }
 
@@ -211,6 +197,7 @@ class ShowFragment : Fragment() {
             adapter.sizeType = Constants.SREDNAYA
             adapter.submitList(pizza.getList())
             binding.tonciy.isGone = false
+            seleltList()
         }
     }
 
@@ -282,7 +269,7 @@ class ShowFragment : Fragment() {
                         chip.text.length,
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
                     )
-                    chip.text =spannable
+                    chip.text = spannable
                 }
 
                 binding.descriptionShowder.addView(chip)
@@ -311,5 +298,13 @@ class ShowFragment : Fragment() {
         return chip
     }
 
+    fun seleltList() {
 
+        var newList = mutableListOf<Vkus>()
+        for (item in pizza.getList()) {
+            newList.add(item.copy(select = false))
+        }
+
+        adapter.submitList(newList)
+    }
 }

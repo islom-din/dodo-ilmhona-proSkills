@@ -1,3 +1,4 @@
+
 package islom.din.dodo_ilmhona_proskills.view.ViewPager
 
 import android.os.Bundle
@@ -12,7 +13,7 @@ import kotlin.math.abs
 
 class FragmentViewPager:Fragment() {
     private var _binding:ViewpagerLayoutBinding? =null
-private val binding get() =  _binding!!
+    private val binding get() =  _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,7 +26,7 @@ private val binding get() =  _binding!!
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       val adapter = ViewPagerAdapter(this)
+        val adapter = ViewPagerAdapter(this)
         binding.viewPagerLayout.adapter = adapter
         binding.viewPagerLayout.setPageTransformer(getTransformation())
     }
@@ -37,14 +38,13 @@ private val binding get() =  _binding!!
 
     companion object {
         private fun getTransformation(): CompositePageTransformer {
-             val transformer = CompositePageTransformer()
-             transformer.addTransformer(MarginPageTransformer(30))
-             transformer.addTransformer { page, position ->
-                 page.scaleY = 0.85f + (1 - abs(position)) * 0.15f
-
-             }
-             return transformer
-         }
+            val transformer = CompositePageTransformer()
+            transformer.addTransformer(MarginPageTransformer(30))
+            transformer.addTransformer { page, position ->
+                page.scaleY = 0.85f + (1 - abs(position)) * 0.15f
+            }
+            return transformer
+        }
     }
 
 }

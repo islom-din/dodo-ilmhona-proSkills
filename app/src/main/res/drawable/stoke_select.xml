@@ -1,11 +1,13 @@
-<!-- drawable/frame_5.xml -->
+
 <vector
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
-    android:width="@dimen/cardview_compat_inset_shadow"
-    android:height="@dimen/cardview_compat_inset_shadow"
 
-    android:viewportWidth="116"
+    android:width="120dp"
+    android:height="115dp"
+
+    android:viewportWidth="120"
+
     android:viewportHeight="91"
     >
 
