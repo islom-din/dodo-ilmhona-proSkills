@@ -1,10 +1,12 @@
 package islom.din.dodo_ilmhona_proskills
 
 import android.os.Bundle
+import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import islom.din.dodo_ilmhona_proskills.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +30,5 @@ class MainActivity : AppCompatActivity() {
         bottomNavView.setupWithNavController(navController)
         bottomNavView.itemIconTintList = null
     }
-
 
 }

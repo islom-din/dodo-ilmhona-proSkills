@@ -23,6 +23,9 @@
             android:name="zal_location"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_navigation_home_to_storyFragment2"
+            app:destination="@id/storyFragment2" />
     </fragment>
     <fragment
         android:id="@+id/navigation_profile"
@@ -67,4 +70,8 @@
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/storyFragment2"
+        android:name="islom.din.dodo_ilmhona_proskills.shodmon.bekhruz.StoryFragment"
+        android:label="StoryFragment" />
 </navigation>
