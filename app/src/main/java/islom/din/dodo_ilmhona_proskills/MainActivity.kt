@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(binding.fragmentsContainer.id) as NavHostFragment
         val navController = navFragment.navController
 
+        
+
         //Implementing navigation beetween fragments clicking Bottom NavView
         bottomNavView.setupWithNavController(navController)
         bottomNavView.itemIconTintList = null
