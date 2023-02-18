@@ -31,7 +31,7 @@
             android:contentDescription="TODO"
             android:padding="10dp"
             android:src="@drawable/ingridient_4"
-            app:shapeAppearance="@style/shape_img" />
+            />
 
         <TextView
             android:id="@+id/sous_name"

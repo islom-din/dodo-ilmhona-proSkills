@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -49,9 +50,8 @@ class HomeFragment : Fragment() {
 
         // Pizza recycler view initialising and setting adapter and list for it
         adapterForPizza = PizzaAdapter { pizza ->
-
-            //Here should be written logic for navigation to another fragment
-//            navigateToShowFragment(pizza)
+            var action = HomeFragmentDirections.actionNavigationHomeToComboFragment2(pizza)
+            findNavController().navigate(action)
         }
         adapterForPizza.submitList(viewModel.pizzaList)
         binding.pizzaRv.adapter = adapterForPizza

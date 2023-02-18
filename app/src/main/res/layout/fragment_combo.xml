@@ -31,7 +31,7 @@
              android:id="@+id/nameCombo"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             style="@style/name_txt"
+
              android:text="Name_item"
              app:layout_constraintTop_toBottomOf="@id/imageComboFragment"
              app:layout_constraintStart_toStartOf="parent"/>

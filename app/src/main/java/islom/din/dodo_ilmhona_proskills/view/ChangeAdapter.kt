@@ -17,16 +17,14 @@ class ChangeAdapter:ListAdapter<Pizza,ChangeAdapter.ChangeViewHolder>(ChangDiffu
     inner class ChangeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ComboDezignBinding.bind(itemView)
 
-        init {
-            binding.root.setOnClickListener {
-                onClickItem?.invoke(getItem(adapterPosition), adapterPosition)
-            }
-        }
-
         fun bind(pizza: Pizza){
             binding.imageComboDezign.setImageResource(pizza.image)
             binding.nameComboDezign.text = pizza.name
             binding.descriptionComboDezig.text = pizza.name
+
+            binding.root.setOnClickListener {
+                onClickItem?.invoke(pizza,adapterPosition)
+            }
         }
     }
 

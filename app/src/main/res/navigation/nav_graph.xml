@@ -23,6 +23,9 @@
             android:name="zal_location"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_navigation_home_to_comboFragment2"
+            app:destination="@id/comboFragment2" />
     </fragment>
     <fragment
         android:id="@+id/navigation_profile"
@@ -66,5 +69,30 @@
             app:destination="@id/navigation_home"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/comboFragment2"
+        android:name="islom.din.dodo_ilmhona_proskills.ComboFragment"
+        android:label="fragment_combo"
+        tools:layout="@layout/fragment_combo" >
+        <action
+            android:id="@+id/action_comboFragment2_to_fragmetSelectPizza"
+            app:destination="@id/fragmetSelectPizza" />
+        <argument
+            android:name="pizza"
+            app:argType="islom.din.dodo_ilmhona_proskills.QA.data.Pizza"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmetSelectPizza"
+        android:name="islom.din.dodo_ilmhona_proskills.FragmetSelectPizza"
+        android:label="fragment_fragmet_select_pizza"
+        tools:layout="@layout/fragment_fragmet_select_pizza" >
+        <action
+            android:id="@+id/action_fragmetSelectPizza_to_comboFragment2"
+            app:destination="@id/comboFragment2" />
+        <argument
+            android:name="pizza"
+            app:argType="islom.din.dodo_ilmhona_proskills.model.Pizza" />
     </fragment>
 </navigation>

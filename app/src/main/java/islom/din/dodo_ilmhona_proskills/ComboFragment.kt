@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import islom.din.dodo_ilmhona_proskills.databinding.FragmentComboBinding
@@ -47,9 +48,8 @@ class ComboFragment : Fragment() {
 
         adapter.onClickItem = { pizza, pos ->
             viewModel.choosePizzaPosition = pos
-            val action = ComboFragmentDirections.actionComboFragmentToFragmetSelectPizza(pizza)
-            (requireActivity().supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment)
-                .navController.navigate(action)
+            val action = ComboFragmentDirections.actionComboFragment2ToFragmetSelectPizza(pizza)
+            findNavController().navigate(action)
         }
 
         viewModel.pizza.observe(viewLifecycleOwner) { listOfPizza ->
