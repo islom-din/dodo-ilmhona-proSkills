@@ -20,11 +20,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("example_tag", "Step 1")
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Log.d("example_tag", "Step 2")
         //Navigation view getting from layout
         val bottomNavView = binding.bottomNavView
 
@@ -37,32 +36,5 @@ class MainActivity : AppCompatActivity() {
         //Implementing navigation beetween fragments clicking Bottom NavView
         bottomNavView.setupWithNavController(navController)
         bottomNavView.itemIconTintList = null
-
-        Log.d("example_tag", "Step 4 (start working with DB)")
-        // Получили объект для базы данных
-
-
-
-
-        lifecycleScope.launch {
-            doSomeWork()
-            Log.d("example_tag", "Step 4* working in another thread")
-            val dataBase = DataBase.getInstance(this@MainActivity)
-            val allPizza = dataBase.pizzaDao().getAllPizza()
-
-            withContext(Dispatchers.Main) {
-                // adapter.submitList()
-            }
-        }
-
-
-
-        Log.d("example_tag", "Step 5")
-        // .... animation ....
-        // update of recycler view
-    }
-
-    suspend fun doSomeWork() {
-        delay(15000)
     }
 }
