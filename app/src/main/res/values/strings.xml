@@ -20,4 +20,5 @@
     <string name="text_for_pizza_item">2 пиццы 25 см и напиток на выбор. Для компании из 2-4 человек</string>
     <string name="pizza_item_title">2 пиццы и напиток</string>
     <string name="dushanbe">Душанбе</string>
+    <string name="korzina_image_description">Картинка товара</string>
 </resources>
