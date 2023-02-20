@@ -3,25 +3,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ItemKorzinaFragment">
 
 
         <ImageView
             android:id="@+id/korzina_item_image"
-            android:layout_width="170dp"
-            android:layout_height="170dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:src="@raw/img_1"
 
             />
 
         <TextView
             android:id="@+id/korzina_item_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/korzina_item_image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Название"
+            />
+
+
+        <TextView
+            android:id="@+id/korzina_item_description"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/korzina_item_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/korzina_item_title"
+            tools:text="@tools:sample/backgrounds/scenic"
+            android:layout_marginTop="10dp"
             />
+
+        <View
+            android:id="@+id/split_line"
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:background="@color/grey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/korzina_item_image"/>
+
+
+
 
 
 
