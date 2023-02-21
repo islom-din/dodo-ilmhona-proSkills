@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nag_graf"
+    app:startDestination="@id/profilFragement2">
+    <fragment
+        android:id="@+id/profilFragement2"
+        android:name="com.example.order.view.ProfilFragement"
+        android:label="ProfilFragement" >
+        <action
+            android:id="@+id/action_profilFragement2_to_dodoCoinFragment2"
+            app:destination="@id/dodoCoinFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/dodoCoinFragment2"
+        android:name="com.example.order.view.DodoCoinFragment"
+        android:label="DodoCoinFragment" />
+</navigation>

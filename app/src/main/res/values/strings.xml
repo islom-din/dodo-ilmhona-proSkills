@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">dodo-ilmhona-proSkills</string>
+    <dimen name="viewpager_next_item_visible">70dp</dimen>
+    <dimen name="viewpager_current_item_horizontal_margin">80dp</dimen>
+
 </resources>
