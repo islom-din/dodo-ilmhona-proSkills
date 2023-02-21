@@ -10,7 +10,3 @@ data class MPizza(
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "price") val price: Int,
 )
-
-/// ----id-----name--------price ------ description
-// -----1------Dodo--------7000 -------- null
-// -----2------Diablo--------10000 ------ null

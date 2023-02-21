@@ -1,6 +1,7 @@
 package islom.din.dodo_ilmhona_proskills.QA.data
 
 import android.os.Parcelable
+import androidx.room.Dao
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
