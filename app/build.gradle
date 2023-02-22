@@ -52,9 +52,9 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
 
     // room
-    implementation("androidx.room:room-runtime:2.4.1")
-    implementation("androidx.room:room-ktx:2.4.1")
-    kapt("androidx.room:room-compiler:2.4.1")
+    implementation("androidx.room:room-runtime:2.5.0")
+    implementation("androidx.room:room-ktx:2.5.0")
+    kapt("androidx.room:room-compiler:2.5.0")
 
     // viewModel scope
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
@@ -64,4 +64,7 @@ dependencies {
 
     // livedata
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 }

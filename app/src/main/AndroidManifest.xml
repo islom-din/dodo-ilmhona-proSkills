@@ -4,6 +4,7 @@
     package="islom.din.dodo_ilmhona_proskills">
 
     <application
+        android:name=".application.DataBaseApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"

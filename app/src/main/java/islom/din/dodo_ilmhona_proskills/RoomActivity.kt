@@ -1,13 +1,9 @@
 package islom.din.dodo_ilmhona_proskills
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.lifecycle.lifecycleScope
-import islom.din.dodo_ilmhona_proskills.databinding.ActivityMainBinding
+import androidx.appcompat.app.AppCompatActivity
 import islom.din.dodo_ilmhona_proskills.databinding.ActivityRoomBinding
-import islom.din.dodo_ilmhona_proskills.db.DataBase
-import islom.din.dodo_ilmhona_proskills.db.MPizza
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,15 +22,15 @@ class RoomActivity : AppCompatActivity() {
 //        val adapter = RoomAdapter()
 //        adapter.submitList(pizza)
 //        binding.rv.adapter = adapter
-        CoroutineScope(Dispatchers.IO).launch {
-            val dataBase = DataBase.getInstance(this@RoomActivity)
-            val allPizza = dataBase.pizzaDao().getAllPizza()
-            Log.d("TAG","$allPizza")
-            withContext(Dispatchers.Main) {
-                    val adapter = RoomAdapter()
-                    adapter.submitList(allPizza)
-                    binding.rv.adapter = adapter
-            }
-        }
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val dataBase = DataBase.getInstance(this@RoomActivity)
+//            val allPizza = dataBase.pizzaDao().getAllPizza()
+//            Log.d("TAG","$allPizza")
+//            withContext(Dispatchers.Main) {
+//                    val adapter = RoomAdapter()
+//                    adapter.submitList(allPizza)
+//                    binding.rv.adapter = adapter
+//            }
+//        }
     }
 }

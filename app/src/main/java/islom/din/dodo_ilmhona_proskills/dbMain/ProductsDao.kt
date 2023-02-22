@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ProductsDao {
@@ -14,7 +15,6 @@ interface ProductsDao {
     suspend fun update(product: Products)
 
     @Query("SELECT * FROM products")
-    fun getAllProducts() : List<Products>
-
+    fun getAllProducts() : Flow<List<Products>>
 
 }

@@ -35,11 +35,6 @@
         android:label="@string/contact"
         tools:layout="@layout/fragment_contact"/>
     <fragment
-        android:id="@+id/navigation_basket"
-        android:name="islom.din.dodo_ilmhona_proskills.QA.fragment.screens.BasketFragment"
-        android:label="@string/basket"
-        tools:layout="@layout/fragment_basket"/>
-    <fragment
         android:id="@+id/adressDostavkiFragment"
         android:name="islom.din.dodo_ilmhona_proskills.QA.fragment.AdressDostavkiFragment"
         android:label="fragment_adress_dostavki"
@@ -67,4 +62,9 @@
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_basket"
+        android:name="islom.din.dodo_ilmhona_proskills.KorzinaFragment"
+        android:label="Корзина"
+        tools:layout="@layout/fragment_korzina" />
 </navigation>

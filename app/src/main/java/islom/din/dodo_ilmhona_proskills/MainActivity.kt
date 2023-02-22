@@ -3,15 +3,9 @@ package islom.din.dodo_ilmhona_proskills
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import islom.din.dodo_ilmhona_proskills.databinding.ActivityMainBinding
-import islom.din.dodo_ilmhona_proskills.db.DataBase
-import islom.din.dodo_ilmhona_proskills.db.MPizza
-import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
 
