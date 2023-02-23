@@ -1,4 +1,4 @@
-package islom.din.dodo_ilmhona_proskills.dbMain
+package islom.din.dodo_ilmhona_proskills.KHQ.dbMain
 
 import androidx.room.*
 

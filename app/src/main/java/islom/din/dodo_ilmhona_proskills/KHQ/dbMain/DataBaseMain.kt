@@ -1,15 +1,14 @@
-package islom.din.dodo_ilmhona_proskills.dbMain
+package islom.din.dodo_ilmhona_proskills.KHQ.dbMain
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import islom.din.dodo_ilmhona_proskills.dbMain.*
 
 @Database(
-    entities = [Ingredients::class,IngredientSize::class,IngredientSizeConnection::class,
-    IngredientsProductsConnection::class,Products::class],
-    version = 1
+    entities = [Ingredients::class, IngredientSize::class, IngredientSizeConnection::class,
+    IngredientsProductsConnection::class, Products::class,Order::class,OrderConnection::class],
+    version = 2
 )
 abstract class DataBaseMain : RoomDatabase() {
 
@@ -18,6 +17,8 @@ abstract class DataBaseMain : RoomDatabase() {
     abstract fun ingredientProductsConnectionDao() : IngredientsProductsConnectionDao
     
     abstract fun productsDao() : ProductsDao
+
+    abstract fun orderDao() : OrderDao
 
     companion object {
         @Volatile
@@ -33,7 +34,7 @@ abstract class DataBaseMain : RoomDatabase() {
                         "main_db"
                     )
 
-                    INSTANCE = builder.build()
+                    INSTANCE = builder.createFromAsset("database/main_db_example").build()
                     return INSTANCE!!
                 }
                 return INSTANCE!!
