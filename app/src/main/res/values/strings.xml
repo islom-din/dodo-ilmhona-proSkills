@@ -21,4 +21,9 @@
     <string name="pizza_item_title">2 пиццы и напиток</string>
     <string name="dushanbe">Душанбе</string>
     <string name="korzina_image_description">Картинка товара</string>
+    <string name="korzina_empty_description">Ваша корзина пуста. Добавьте понравившийся товар из \"Меню\"\n\nМы доставим Ваш заказ от 60TJS</string>
+    <string name="korzina_empty_title">Пусто!</string>
+    <string name="korzina_btn_create_order">Оформить за</string>
+    <string name="korzina_txt_korzina">Корзина</string>
+    <string name="korzina_empty_btn">\"Меню\"</string>
 </resources>
