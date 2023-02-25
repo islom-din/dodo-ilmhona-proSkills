@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -11,6 +12,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.chip.Chip
+import islom.din.dodo_ilmhona_proskills.KHQ.roomViewModel.RoomViewModel
+import islom.din.dodo_ilmhona_proskills.KHQ.roomViewModel.RoomViewModelFactory
 import islom.din.dodo_ilmhona_proskills.QA.Constants
 import islom.din.dodo_ilmhona_proskills.R
 import islom.din.dodo_ilmhona_proskills.QA.adapter.InterestingAdapter
@@ -18,6 +21,7 @@ import islom.din.dodo_ilmhona_proskills.QA.adapter.PizzaAdapter
 import islom.din.dodo_ilmhona_proskills.databinding.ChipItemBinding
 import islom.din.dodo_ilmhona_proskills.databinding.FragmentHomeBinding
 import islom.din.dodo_ilmhona_proskills.QA.viewmodel.HomeViewModel
+import islom.din.dodo_ilmhona_proskills.application.DataBaseApplication
 
 class HomeFragment : Fragment() {
     //binding
@@ -30,6 +34,14 @@ class HomeFragment : Fragment() {
     private val args : HomeFragmentArgs by navArgs()
 
     private lateinit var adapterForPizza: PizzaAdapter
+
+    //Room View Model
+    private val roomViewModel: RoomViewModel by activityViewModels {
+        RoomViewModelFactory((requireActivity().application as DataBaseApplication).database.ingredientsDao(),
+            (requireActivity().application as DataBaseApplication).database.ingredientProductsConnectionDao(),
+            (requireActivity().application as DataBaseApplication).database.productsDao(),
+            (requireActivity().application as DataBaseApplication).database.orderDao())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -47,17 +59,8 @@ class HomeFragment : Fragment() {
         if (!viewModel.hideBottomNavView)
             bottomNavigationView.visibility = View.VISIBLE
 
-        // Pizza recycler view initialising and setting adapter and list for it
-        adapterForPizza = PizzaAdapter { pizza ->
+        adapterForPizza = PizzaAdapter()
 
-            //Here should be written logic for navigation to another fragment
-//            navigateToShowFragment(pizza)
-        }
-        adapterForPizza.submitList(viewModel.pizzaList)
-        binding.pizzaRv.adapter = adapterForPizza
-
-
-        //Creating all categories programmatically
         setupChip()
         scrollingOnCategoryClicked()
         chooseOrderType()
@@ -66,9 +69,6 @@ class HomeFragment : Fragment() {
         setupInterestingRecyclerView()
 
 
-
-        // Not used, but alternatively method for Category RecyclerView
-//        settingCategoryRecyclerView()
 
     }
 
@@ -150,6 +150,15 @@ class HomeFragment : Fragment() {
     private fun settingPizzaRecyclerView() {
         // Pizza recycler view initialising and setting adapter and list for it
         adapterForPizza.submitList(viewModel.pizzaList)
+
+        //Adding Pizzas to DB on price clicking
+//        adapterForPizza.order = { orderedPizza ->
+//            roomViewModel.insertProducts(orderedPizza)
+//        }
+//        adapterForPizza.order = {
+//            roomViewModel.newOrderConnection(Constants.USER_ID,it.id)
+//            Toast.makeText(requireContext(),"Added to busket",Toast.LENGTH_SHORT).show()
+//        }
         binding.pizzaRv.adapter = adapterForPizza
     }
 
@@ -180,27 +189,3 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 }
-
-
-//    private fun settingCategoryRecyclerView() {
-//        //  Category recyclerview initialising and setting adapter for it
-//        val adapterForCategory = CategoryAdapter()
-//        adapterForCategory.submitList(viewModel.categoryList)
-//        adapterForCategory.onClickedSelectedItem = {
-//            //For changing the selected Item
-//            var newList = mutableListOf<Category>()
-//
-//            //Getting new List from previous
-//            for (item in adapterForCategory.currentList.indices) {
-//                if (item == it) {
-//                    val newStateForCategory =
-//                        adapterForCategory.currentList[item].copy(isChecked = true)
-//                    newList.add(newStateForCategory)
-//                } else {
-//                    newList.add(viewModel.categoryList[item])
-//                }
-//            }
-//            adapterForCategory.submitList(newList)
-//        }
-////        binding.categoryRv.adapter = adapterForCategory
-//    }

@@ -19,5 +19,7 @@ class Constants {
 
         const val ADRESS_VIBOR = "Выбор адрес доставки"
 
+        const val USER_ID = 1
+
     }
 }

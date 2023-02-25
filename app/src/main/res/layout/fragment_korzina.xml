@@ -42,13 +42,17 @@
             tools:text="2 товара на 300 TJS"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            tools:listitem="@layout/fragment_item_korzina"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            tools:listitem="@layout/interesting_item"
             android:id="@+id/korzina_items"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/korzina_count_items"
-            app:layout_constraintBottom_toTopOf="@id/btn_create_order"
+            app:layout_constraintBottom_toBottomOf="parent"
             />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

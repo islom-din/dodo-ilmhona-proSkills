@@ -11,8 +11,10 @@ import islom.din.dodo_ilmhona_proskills.databinding.PizzaItemBinding
 import islom.din.dodo_ilmhona_proskills.databinding.PizzaItemMainBinding
 import islom.din.dodo_ilmhona_proskills.QA.diffUtils.PizzaDiffUtls
 
-class PizzaAdapter(onClick : ((Pizza) -> Unit)) : ListAdapter<Pizza,ViewHolder>(PizzaDiffUtls()) {
+class PizzaAdapter() : ListAdapter<Pizza,ViewHolder>(PizzaDiffUtls()) {
 
+    var onClick : ((Pizza) -> Unit)? = null
+    var order : ((Pizza) -> Unit)? = null
 
     inner class PizzaMainViewHolder(itemView: View)  : ViewHolder(itemView) {
         private var binding = PizzaItemMainBinding.bind(itemView)
@@ -34,6 +36,9 @@ class PizzaAdapter(onClick : ((Pizza) -> Unit)) : ListAdapter<Pizza,ViewHolder>(
             binding.pizzaName.text = pizzaData.name
             binding.pizzaAbout.text = pizzaData.about
             binding.piccaPrice.text = pizzaData.formatPrice()
+            binding.piccaPrice.setOnClickListener {
+                order?.invoke(pizzaData)
+            }
         }
     }
 
