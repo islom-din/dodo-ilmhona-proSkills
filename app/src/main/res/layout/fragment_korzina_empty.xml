@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".KorzinaEmptyFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/korzina_empty_image"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/korzina_empty"
+        android:scaleType="centerInside"/>
+
+
+
+    <TextView
+        android:id="@+id/korzina_empty_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/korzina_empty_title"
+        android:textStyle="bold"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/korzina_empty_image"
+        android:layout_marginTop="10dp"
+        />
+
+        <TextView
+            android:id="@+id/korzina_empty_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/korzina_empty_description"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@id/korzina_empty_image"
+            app:layout_constraintEnd_toEndOf="@id/korzina_empty_image"
+            app:layout_constraintTop_toBottomOf="@id/korzina_empty_title"
+            />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/korzina_empty_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_style"
+                android:text="@string/korzina_empty_btn"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@id/korzina_empty_title"
+                app:layout_constraintEnd_toEndOf="@id/korzina_empty_title"
+                app:layout_constraintTop_toBottomOf="@id/korzina_empty_description"
+                android:layout_marginTop="20dp"
+                />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
