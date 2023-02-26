@@ -25,6 +25,10 @@ class PizzaAdapter() : ListAdapter<Pizza,ViewHolder>(PizzaDiffUtls()) {
             binding.pizzaAbout.text = pizzaData.about
             binding.piccaPrice.text = pizzaData.formatPrice()
 
+            binding.piccaPrice.setOnClickListener {
+                order?.invoke(pizzaData)
+            }
+
         }
     }
 

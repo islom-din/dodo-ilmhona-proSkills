@@ -17,7 +17,7 @@
         android:title="@string/contact"
         app:showAsAction="always" />
     <item
-        android:id="@id/navigation_basket"
+        android:id="@id/korzinaFragment"
         android:icon="@drawable/selector_basket"
         android:title="@string/basket"
         app:showAsAction="always" />

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".KorzinaFragment">
+    android:fitsSystemWindows="true"
+    tools:context=".KHQ.fragments.KorzinaFragment">
 
     <TextView
         android:id="@+id/txt_korzina"
@@ -13,67 +14,129 @@
         android:text="@string/korzina_txt_korzina"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/scrool_korzina"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/empty_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/korzina_empty_image"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="100dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/korzina_empty"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/korzina_empty_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/korzina_empty_title"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/korzina_empty_image" />
+
+        <TextView
+            android:id="@+id/korzina_empty_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/korzina_empty_description"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/korzina_empty_image"
+            app:layout_constraintStart_toStartOf="@id/korzina_empty_image"
+            app:layout_constraintTop_toBottomOf="@id/korzina_empty_title" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/korzina_empty_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_style"
+            android:text="@string/korzina_empty_btn"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@id/korzina_empty_title"
+            app:layout_constraintStart_toStartOf="@id/korzina_empty_title"
+            app:layout_constraintTop_toBottomOf="@id/korzina_empty_description" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <ScrollView
         android:id="@+id/scrool_korzina"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/txt_korzina"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_create_order"
         app:layout_constraintEnd_toEndOf="parent"
-        >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_korzina">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/korzina_constraint_scrool"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <TextView
-            android:id="@+id/korzina_count_items"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-            tools:text="2 товара на 300 TJS"/>
+                android:id="@+id/korzina_count_items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/rv_korzina_items"
+                app:layout_constraintStart_toStartOf="@id/korzina_constraint_scrool"
+                app:layout_constraintEnd_toEndOf="@id/korzina_constraint_scrool"
+                app:layout_constraintTop_toTopOf="@id/korzina_constraint_scrool"
+                android:padding="@dimen/super_low_mp"
+                tools:text="2 товара на 300 TJS" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"
-            tools:listitem="@layout/fragment_item_korzina"
-            android:id="@+id/korzina_items"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/korzina_count_items"
-            app:layout_constraintBottom_toBottomOf="@id/korzina_constraint_scrool"
-            />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_korzina_items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/medium_mp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="@id/korzina_constraint_scrool"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/korzina_count_items"
+                tools:listitem="@layout/item_korzina" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </ScrollView>
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_create_order"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:text="@string/korzina_btn_create_order"
-        android:textColor="@color/white"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/button_style"
         android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        />
+        android:text="@string/korzina_btn_create_order"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

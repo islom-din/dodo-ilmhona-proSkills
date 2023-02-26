@@ -151,14 +151,15 @@ class HomeFragment : Fragment() {
         // Pizza recycler view initialising and setting adapter and list for it
         adapterForPizza.submitList(viewModel.pizzaList)
 
-        //Adding Pizzas to DB on price clicking
+//        Adding Pizzas to DB on price clicking
 //        adapterForPizza.order = { orderedPizza ->
 //            roomViewModel.insertProducts(orderedPizza)
+//            Toast.makeText(requireContext(),"Added to db",Toast.LENGTH_SHORT).show()
 //        }
-//        adapterForPizza.order = {
-//            roomViewModel.newOrderConnection(Constants.USER_ID,it.id)
-//            Toast.makeText(requireContext(),"Added to busket",Toast.LENGTH_SHORT).show()
-//        }
+        adapterForPizza.order = {
+            roomViewModel.newOrderConnection(Constants.USER_ID,it.id,1)
+            Toast.makeText(requireContext(),"Added to busket",Toast.LENGTH_SHORT).show()
+        }
         binding.pizzaRv.adapter = adapterForPizza
     }
 

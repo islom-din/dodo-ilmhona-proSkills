@@ -4,9 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="15dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ItemKorzinaFragment">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <ImageView
             android:id="@+id/korzina_item_image"
@@ -39,8 +37,8 @@
             app:layout_constraintStart_toEndOf="@id/korzina_item_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/korzina_item_title"
+            app:layout_constraintBottom_toTopOf="@id/split_line"
             tools:text="@tools:sample/backgrounds/scenic"
-            android:layout_marginTop="10dp"
             />
 
         <View
@@ -73,12 +71,14 @@
             android:orientation="horizontal"
             android:background="@drawable/number_picker_background">
                 <ImageButton
+                    android:id="@+id/korzina_count_delete"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_count_minus"
                     android:padding="10dp"
                     android:layout_marginStart="5dp" />
                 <TextView
+                    android:id="@+id/korzina_item_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -89,6 +89,7 @@
                     android:gravity="center"
                     android:textAlignment="center"/>
                 <ImageButton
+                    android:id="@+id/korzina_count_add"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_count_plus"

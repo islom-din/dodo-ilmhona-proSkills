@@ -63,8 +63,14 @@
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/navigation_basket"
-        android:name="islom.din.dodo_ilmhona_proskills.KorzinaFragment"
-        android:label="Корзина"
-        tools:layout="@layout/fragment_korzina" />
+        android:id="@+id/korzinaFragment"
+        android:name="islom.din.dodo_ilmhona_proskills.KHQ.fragments.KorzinaFragment"
+        android:label="fragment_korzina"
+        tools:layout="@layout/fragment_korzina" >
+        <action
+            android:id="@+id/action_korzinaFragment_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/korzinaFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

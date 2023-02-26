@@ -1,11 +1,9 @@
 package islom.din.dodo_ilmhona_proskills.KHQ.roomViewModel
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import islom.din.dodo_ilmhona_proskills.KHQ.dbMain.*
+import islom.din.dodo_ilmhona_proskills.QA.Constants
 import islom.din.dodo_ilmhona_proskills.QA.data.Pizza
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,29 +13,56 @@ class RoomViewModel(private val ingredientsDao: IngredientsDao,
                     private val productsDao: ProductsDao,
                     private val orderDao: OrderDao
 ) : ViewModel() {
-    val getProducts = productsDao.getAllProducts()
 
-    private var _busketList = MutableLiveData<List<Products>>()
-    val busketList : LiveData<List<Products>> get() = _busketList
+     var totalPrice = MutableLiveData<Int>(0)
 
-    fun insertProducts(pizza : Pizza){
-        val products = Products(name = pizza.name, image = pizza.image, price = pizza.price, category = pizza.category, about = pizza.about)
-        viewModelScope.launch {
-            productsDao.insertAll(products)
+    fun deleteOrderByUserId(userId: Int){
+        viewModelScope.launch(Dispatchers.IO) {
+            orderDao.deleteOrder(userId)
         }
     }
 
-    fun newOrderConnection(userId : Int,productId: Int) {
-        val orderConnection = OrderConnection(userId = userId, productId = productId)
-        Log.d("TESTING","${orderConnection.userId} && ${orderConnection.productId}")
+    fun getOrderByUserId(userId: Int) : List<OrderConnection> {
+        return orderDao.getOrderByUserId(userId)
+    }
+
+//    fun insertProducts(pizza : Pizza){
+//        val products = Products(name = pizza.name, image = pizza.image, price = pizza.price, category = pizza.category, about = pizza.about)
+//        viewModelScope.launch {
+//            productsDao.insertAll(products)
+//        }
+//    }
+
+    fun updateOrderAmount(amount: Int,user_id: Int, productId: Int,) {
+        viewModelScope.launch(Dispatchers.IO) {
+            orderDao.updateOrderAmount(amount, user_id, productId)
+        }
+    }
+
+    fun newOrderConnection(userId : Int,productId: Int,amount : Int) {
+        val orderConnection = OrderConnection(userId = userId, productId = productId, amount = amount)
         viewModelScope.launch {
             orderDao.newOrderConnection(orderConnection)
         }
     }
 
-    fun getBusket(userId: Int){
+    fun getBusket(userId: Int) : LiveData<List<Products>>? {
+            return orderDao.getOrderedProducts(user_id = userId).asLiveData()
+        }
+
+    fun getProductsSum() : LiveData<Int> {
+        return orderDao.getProductsSum(Constants.USER_ID).asLiveData()
+    }
+
+//    fun getOrderedProductsAmount() : LiveData<List<Int>>{
+//        viewModelScope.launch(Dispatchers.IO) {
+//            orderDao.getOrderedProductsAmount(Constants.USER_ID)
+//        }
+//    }
+
+    fun newOrderServer(orderConnectionServerList: List<OrderConnectionServer>){
         viewModelScope.launch(Dispatchers.IO) {
-            _busketList.postValue(orderDao.getOrderedProducts(user_id = userId))
+            orderDao.insertOrderServer(orderConnectionServerList)
         }
     }
 }
