@@ -1,10 +1,8 @@
-package islom.din.dodo_ilmhona_proskills.KHQ.dbMain
+package islom.din.dodo_ilmhona_proskills.khq.dbMain
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import islom.din.dodo_ilmhona_proskills.QA.data.Ingridients
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface IngredientsDao {

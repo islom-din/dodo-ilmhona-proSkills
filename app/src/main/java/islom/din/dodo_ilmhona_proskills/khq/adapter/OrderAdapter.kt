@@ -1,4 +1,4 @@
-package islom.din.dodo_ilmhona_proskills.KHQ.adapter
+package islom.din.dodo_ilmhona_proskills.khq.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,23 +6,25 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import islom.din.dodo_ilmhona_proskills.KHQ.dbMain.Products
+import islom.din.dodo_ilmhona_proskills.khq.dbMain.Products
 import islom.din.dodo_ilmhona_proskills.R
 import islom.din.dodo_ilmhona_proskills.databinding.ItemKorzinaBinding
 
 class OrderAdapter() : ListAdapter<Products,OrderAdapter.OrderViewHolder>(OrderDiffUtils()) {
 
     var updateAmount : ((Int,Int) -> Unit)? = null
+    var deleteProduct : ((Int) ->Unit)? = null
+    var list = listOf<Int>()
 
     inner class OrderViewHolder(itemView: View) : ViewHolder(itemView){
         var binding = ItemKorzinaBinding.bind(itemView)
 
-        fun bind(products: Products){
+        fun bind(products: Products,pos : Int){
             binding.korzinaItemImage.setImageResource(products.image)
             binding.korzinaItemTitle.text = products.name
             binding.korzinaItemTotal.text = products.price.toString()
             binding.korzinaItemDescription.text = products.about
-            binding.korzinaItemAmount.text = "1"
+            binding.korzinaItemAmount.text = list[pos].toString()
 
             var amount = binding.korzinaItemAmount.text.toString().toInt()
 
@@ -31,6 +33,8 @@ class OrderAdapter() : ListAdapter<Products,OrderAdapter.OrderViewHolder>(OrderD
                     amount--
                     binding.korzinaItemAmount.text = amount.toString()
                     updateAmount?.invoke(products.id,amount)
+                } else {
+                    deleteProduct?.invoke(products.id)
                 }
             }
             binding.korzinaCountAdd.setOnClickListener {
@@ -58,6 +62,6 @@ class OrderAdapter() : ListAdapter<Products,OrderAdapter.OrderViewHolder>(OrderD
     }
 
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position),position)
     }
 }

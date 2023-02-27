@@ -1,11 +1,11 @@
-package islom.din.dodo_ilmhona_proskills.KHQ.roomViewModel
+package islom.din.dodo_ilmhona_proskills.khq.roomViewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import islom.din.dodo_ilmhona_proskills.KHQ.dbMain.IngredientsDao
-import islom.din.dodo_ilmhona_proskills.KHQ.dbMain.IngredientsProductsConnectionDao
-import islom.din.dodo_ilmhona_proskills.KHQ.dbMain.OrderDao
-import islom.din.dodo_ilmhona_proskills.KHQ.dbMain.ProductsDao
+import islom.din.dodo_ilmhona_proskills.khq.dbMain.IngredientsDao
+import islom.din.dodo_ilmhona_proskills.khq.dbMain.IngredientsProductsConnectionDao
+import islom.din.dodo_ilmhona_proskills.khq.dbMain.OrderDao
+import islom.din.dodo_ilmhona_proskills.khq.dbMain.ProductsDao
 
 class RoomViewModelFactory(private val ingredientsDao: IngredientsDao,
                            private val ingredientsProductsConnectionDao: IngredientsProductsConnectionDao,

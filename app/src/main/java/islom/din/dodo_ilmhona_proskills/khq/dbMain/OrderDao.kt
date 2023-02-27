@@ -1,6 +1,5 @@
-package islom.din.dodo_ilmhona_proskills.KHQ.dbMain
+package islom.din.dodo_ilmhona_proskills.khq.dbMain
 
-import android.icu.util.CurrencyAmount
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
@@ -35,5 +34,8 @@ interface OrderDao {
     fun getProductsSum(user_id: Int) : Flow<Int>
 
     @Query("SELECT amount FROM order_connection WHERE user_id = :user_id")
-    fun getOrderedProductsAmount(user_id: Int) : List<Int>
+    fun getOrderedAmount(user_id: Int) : Flow<List<Int>>
+
+    @Query("DELETE FROM order_connection WHERE user_id = :user_id AND product_id = :product_id")
+    fun deleteOrder(user_id: Int,product_id: Int)
 }

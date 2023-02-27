@@ -1,11 +1,10 @@
-package islom.din.dodo_ilmhona_proskills.KHQ.dbMain
+package islom.din.dodo_ilmhona_proskills.khq.dbMain
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import islom.din.dodo_ilmhona_proskills.QA.Constants
-import java.time.temporal.TemporalAmount
 
 @Entity(tableName = "order_connection_server", foreignKeys = [ForeignKey(Order::class,["user_id"],["user_id"], onDelete = ForeignKey.CASCADE),
     ForeignKey(Products::class,["id"],["product_id"], onDelete = ForeignKey.CASCADE)])

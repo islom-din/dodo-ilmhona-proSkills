@@ -1,4 +1,4 @@
-package islom.din.dodo_ilmhona_proskills.KHQ.dbMain
+package islom.din.dodo_ilmhona_proskills.khq.dbMain
 
 import android.content.Context
 import androidx.room.Database
@@ -46,3 +46,4 @@ abstract class DataBaseMain : RoomDatabase() {
         }
     }
 }
+

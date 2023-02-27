@@ -12,8 +12,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.chip.Chip
-import islom.din.dodo_ilmhona_proskills.KHQ.roomViewModel.RoomViewModel
-import islom.din.dodo_ilmhona_proskills.KHQ.roomViewModel.RoomViewModelFactory
+import islom.din.dodo_ilmhona_proskills.khq.roomViewModel.RoomViewModel
+import islom.din.dodo_ilmhona_proskills.khq.roomViewModel.RoomViewModelFactory
 import islom.din.dodo_ilmhona_proskills.QA.Constants
 import islom.din.dodo_ilmhona_proskills.R
 import islom.din.dodo_ilmhona_proskills.QA.adapter.InterestingAdapter

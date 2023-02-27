@@ -1,6 +1,5 @@
-package islom.din.dodo_ilmhona_proskills.KHQ.dbMain
+package islom.din.dodo_ilmhona_proskills.khq.dbMain
 
-import android.view.inspector.IntFlagMapping
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index

@@ -1,8 +1,7 @@
-package islom.din.dodo_ilmhona_proskills.KHQ.roomViewModel
+package islom.din.dodo_ilmhona_proskills.khq.roomViewModel
 
-import android.util.Log
 import androidx.lifecycle.*
-import islom.din.dodo_ilmhona_proskills.KHQ.dbMain.*
+import islom.din.dodo_ilmhona_proskills.khq.dbMain.*
 import islom.din.dodo_ilmhona_proskills.QA.Constants
 import islom.din.dodo_ilmhona_proskills.QA.data.Pizza
 import kotlinx.coroutines.Dispatchers
@@ -14,8 +13,6 @@ class RoomViewModel(private val ingredientsDao: IngredientsDao,
                     private val orderDao: OrderDao
 ) : ViewModel() {
 
-     var totalPrice = MutableLiveData<Int>(0)
-
     fun deleteOrderByUserId(userId: Int){
         viewModelScope.launch(Dispatchers.IO) {
             orderDao.deleteOrder(userId)
@@ -26,12 +23,12 @@ class RoomViewModel(private val ingredientsDao: IngredientsDao,
         return orderDao.getOrderByUserId(userId)
     }
 
-//    fun insertProducts(pizza : Pizza){
-//        val products = Products(name = pizza.name, image = pizza.image, price = pizza.price, category = pizza.category, about = pizza.about)
-//        viewModelScope.launch {
-//            productsDao.insertAll(products)
-//        }
-//    }
+    fun insertProducts(pizza : Pizza){
+        val products = Products(name = pizza.name, image = pizza.image, price = pizza.price, category = pizza.category, about = pizza.about)
+        viewModelScope.launch {
+            productsDao.insertAll(products)
+        }
+    }
 
     fun updateOrderAmount(amount: Int,user_id: Int, productId: Int,) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -64,6 +61,19 @@ class RoomViewModel(private val ingredientsDao: IngredientsDao,
         viewModelScope.launch(Dispatchers.IO) {
             orderDao.insertOrderServer(orderConnectionServerList)
         }
+    }
+
+    fun deleteOrder(productId: Int){
+        viewModelScope.launch(Dispatchers.IO) {
+            orderDao.deleteOrder(Constants.USER_ID,productId)
+        }
+    }
+
+    private var _orderedAmount = MutableLiveData<List<Int>>()
+    val orderedAmount : LiveData<List<Int>> get() = _orderedAmount
+
+    fun getOrderedAmountLiveData() : LiveData<List<Int>> {
+        return orderDao.getOrderedAmount(Constants.USER_ID).asLiveData()
     }
 }
 

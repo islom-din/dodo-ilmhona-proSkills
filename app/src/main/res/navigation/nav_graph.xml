@@ -64,7 +64,7 @@
     </fragment>
     <fragment
         android:id="@+id/korzinaFragment"
-        android:name="islom.din.dodo_ilmhona_proskills.KHQ.fragments.KorzinaFragment"
+        android:name="islom.din.dodo_ilmhona_proskills.khq.fragments.KorzinaFragment"
         android:label="fragment_korzina"
         tools:layout="@layout/fragment_korzina" >
         <action

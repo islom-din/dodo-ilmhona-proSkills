@@ -1,4 +1,4 @@
-package islom.din.dodo_ilmhona_proskills.KHQ.fragments
+package islom.din.dodo_ilmhona_proskills.khq.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -10,10 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import islom.din.dodo_ilmhona_proskills.KHQ.adapter.OrderAdapter
-import islom.din.dodo_ilmhona_proskills.KHQ.dbMain.OrderConnectionServer
-import islom.din.dodo_ilmhona_proskills.KHQ.roomViewModel.RoomViewModel
-import islom.din.dodo_ilmhona_proskills.KHQ.roomViewModel.RoomViewModelFactory
+import islom.din.dodo_ilmhona_proskills.khq.adapter.OrderAdapter
+import islom.din.dodo_ilmhona_proskills.khq.dbMain.OrderConnectionServer
+import islom.din.dodo_ilmhona_proskills.khq.roomViewModel.RoomViewModel
+import islom.din.dodo_ilmhona_proskills.khq.roomViewModel.RoomViewModelFactory
 import islom.din.dodo_ilmhona_proskills.QA.Constants
 import islom.din.dodo_ilmhona_proskills.R
 import islom.din.dodo_ilmhona_proskills.application.DataBaseApplication
@@ -49,10 +49,24 @@ class KorzinaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        onOrderClicked()
-        navigateToHomeFragment()
-        observe()
-        orderedBusketObserve()
+
+        roomViewModel.getOrderedAmountLiveData().observe(viewLifecycleOwner){
+            Log.d("TESTING","$it")
+            adapter.list = it
+            onOrderClicked()
+            navigateToHomeFragment()
+            observe()
+            orderedBusketObserve()
+
+        }
+
+//        val list = roomViewModel.getOrderedAmount()
+//        list.observe(viewLifecycleOwner){
+//        }
+
+        adapter.deleteProduct = { productId ->
+            roomViewModel.deleteOrder(productId)
+        }
 
         adapter.updateAmount = { productId,amount ->
             roomViewModel.updateOrderAmount(amount,Constants.USER_ID,productId)

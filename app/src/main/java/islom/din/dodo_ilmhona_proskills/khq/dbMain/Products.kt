@@ -1,8 +1,7 @@
-package islom.din.dodo_ilmhona_proskills.KHQ.dbMain
+package islom.din.dodo_ilmhona_proskills.khq.dbMain
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import islom.din.dodo_ilmhona_proskills.QA.data.Ingridients
 
 @Entity(tableName = "products")
 data class Products (
