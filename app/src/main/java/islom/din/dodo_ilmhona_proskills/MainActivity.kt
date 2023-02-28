@@ -2,13 +2,17 @@ package islom.din.dodo_ilmhona_proskills
 
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import islom.din.dodo_ilmhona_proskills.databinding.ActivityMainBinding
+import islom.din.dodo_ilmhona_proskills.khq.roomViewModel.RoomViewModel
 
 class MainActivity : AppCompatActivity() {
+
+    private val roomViewModel : RoomViewModel by viewModels()
 
     //Binding this layout
     private lateinit var binding: ActivityMainBinding
