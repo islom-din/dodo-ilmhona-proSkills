@@ -4,7 +4,7 @@ import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface OrderDao {
+interface gqOrderDao {
     @Insert
     suspend fun newOrder(order: Order)
 
