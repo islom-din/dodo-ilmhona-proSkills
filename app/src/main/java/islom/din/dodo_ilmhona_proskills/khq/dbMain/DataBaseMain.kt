@@ -7,9 +7,8 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [Ingredients::class, IngredientSize::class, IngredientSizeConnection::class,
-    IngredientsProductsConnection::class, Products::class,Order::class,OrderConnection::class,
-               OrderConnectionServer::class],
-    version = 3
+    IngredientsProductsConnection::class, Products::class,Order::class,OrderConnection::class,OrderHistory::class],
+    version = 1
 )
 abstract class DataBaseMain : RoomDatabase() {
 
@@ -36,7 +35,7 @@ abstract class DataBaseMain : RoomDatabase() {
                     )
 
                     INSTANCE = builder
-                        .fallbackToDestructiveMigration()
+//                        .fallbackToDestructiveMigration()
                         .createFromAsset("database/main_db.db")
                         .build()
                     return INSTANCE!!

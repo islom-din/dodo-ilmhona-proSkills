@@ -25,5 +25,5 @@
     <string name="korzina_empty_title">Пусто!</string>
     <string name="korzina_btn_create_order">Оформить за</string>
     <string name="korzina_txt_korzina">Корзина</string>
-    <string name="korzina_empty_btn">\"Меню\"</string>
+    <string name="korzina_empty_btn">Меню</string>
 </resources>

@@ -1,6 +1,7 @@
 package islom.din.dodo_ilmhona_proskills.QA.fragment.screens
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.Toast
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -22,6 +24,9 @@ import islom.din.dodo_ilmhona_proskills.databinding.ChipItemBinding
 import islom.din.dodo_ilmhona_proskills.databinding.FragmentHomeBinding
 import islom.din.dodo_ilmhona_proskills.QA.viewmodel.HomeViewModel
 import islom.din.dodo_ilmhona_proskills.application.DataBaseApplication
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HomeFragment : Fragment() {
     //binding
@@ -156,10 +161,16 @@ class HomeFragment : Fragment() {
 //            roomViewModel.insertProducts(orderedPizza)
 //            Toast.makeText(requireContext(),"Added to db",Toast.LENGTH_SHORT).show()
 //        }
-        adapterForPizza.order = {
-            roomViewModel.newOrderConnection(Constants.USER_ID,it.id,1)
-            Toast.makeText(requireContext(),"Added to busket",Toast.LENGTH_SHORT).show()
+        lifecycleScope.launch(Dispatchers.IO){
+            val orderNumber = roomViewModel.getOrderNumber(Constants.USER_ID)
+            withContext(Dispatchers.Main){
+                adapterForPizza.order = {
+                    roomViewModel.newOrderConnection(orderNumber,it.id,1)
+                    Toast.makeText(requireContext(),"Added to busket",Toast.LENGTH_SHORT).show()
+                }
+            }
         }
+
         binding.pizzaRv.adapter = adapterForPizza
     }
 
