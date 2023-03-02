@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QA.fragment.MapsFragment">
+
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       map:layout_constraintEnd_toStartOf="parent"
+       map:layout_constraintTop_toTopOf="parent"
+       android:id="@+id/back"
+       android:text="kljdsfghvsjdg"
+       android:textSize="22sp"/>
+
+   <androidx.fragment.app.FragmentContainerView
+       android:id="@+id/mapView"
+       android:name="com.google.android.gms.maps.SupportMapFragment"
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       tools:context=".QA.fragment.MapsFragment"
+       map:layout_constraintEnd_toEndOf="parent"
+
+       map:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

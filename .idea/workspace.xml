@@ -13,7 +13,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be367871-fa57-4a23-8207-cc25b095f419" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/DoucumentFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/PDFFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/QA/fragment/MapsFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/facebook.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/instagram.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/log_icon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/faceb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/map.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/textdesign.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_doucument.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_maps.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_p_d_f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/Fragment_contact.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/AboutFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/QA/fragment/screens/ContactFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/QA/fragment/screens/ContactFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_contact.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_contact.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_contact2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_about.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,17 +54,17 @@
         <option value="valueResourceFile" />
         <option value="layoutResourceFile" />
         <option value="Kotlin Data Class" />
-        <option value="resourceFile" />
         <option value="Kotlin File" />
         <option value="Kotlin Class" />
         <option value="Kotlin Interface" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="UB" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -69,6 +90,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
@@ -82,18 +104,24 @@
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
+    <property name="memory.settings.postsync.last.time.stamp" value="1677595448240" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.DirectoryMappings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\MyProject adnroid\dodo-ilmhona-proSkills\app\src\main\res\drawable-v24" />
+      <recent name="D:\MyProject adnroid\dodo-ilmhona-proSkills\app\src\main\res\raw" />
+      <recent name="D:\MyProject adnroid\dodo-ilmhona-proSkills\app\src\main\res\drawable" />
       <recent name="C:\Users\hp\Desktop\Developer-Adnroid\dodo-ilmhona-proSkills\QA\app\src\main\res\drawable" />
       <recent name="C:\Users\hp\Desktop\Developer-Adnroid\dodo-ilmhona-proSkills\QA\app\src\main\res\raw" />
-      <recent name="C:\Users\hp\Desktop\Developer-Adnroid\dodo-ilmhona-proSkills\QA\app\src\main\res\pictures" />
-      <recent name="C:\Users\hp\Desktop\Developer-Adnroid\dodo-ilmhona-proSkills\app\src\main\res\drawable" />
-      <recent name="C:\Users\hp\Desktop\Developer-Adnroid\dodo-ilmhona-proSkills\app\src\main\res\layout" />
+    </key>
+    <key name="android.template.1396681208">
+      <recent name="islom.din.dodo_ilmhona_proskills" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\MyProject adnroid\dodo-ilmhona-proSkills\app\src\main\res\drawable-v24" />
       <recent name="C:\Users\hp\Desktop\Developer-Adnroid\dodo-ilmhona-proSkills\QA\app\src\main\java\islom\din\dodo_ilmhona_proskills\QA" />
       <recent name="C:\Users\hp\Desktop\Developer-Adnroid\dodo-ilmhona-proSkills\app\src\main\res\drawable-v24" />
     </key>
@@ -101,6 +129,7 @@
       <recent name="islom.din.dodo_ilmhona_proskills.fragment" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="islom.din.dodo_ilmhona_proskills.QA.fragment" />
       <recent name="islom.din.dodo_ilmhona_proskills.fragment" />
       <recent name="islom.din.dodo_ilmhona_proskills.fragment.screens" />
     </key>

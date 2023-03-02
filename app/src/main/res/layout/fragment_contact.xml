@@ -1,14 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".QA.fragment.screens.ContactFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/img_map_conteiner"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="22dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:cardCornerRadius="500dp"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/map"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/app_name" />
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+        <TextView
+            android:id="@+id/openMap"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/img_map_conteiner"
+            android:layout_width="wrap_content"
+            android:text="ПИЦЦЕРИИ НА КАРТЕ"
+            android:textColor="@color/color_for_category"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:paddingVertical="4dp"
+            android:paddingHorizontal="12dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@drawable/textdesign"
+            android:layout_height="wrap_content"
+           />
+
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Связться с поддержкой"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/openMap"
+    android:layout_marginTop="70dp"
+    android:textStyle="bold"
+    android:textSize="16sp"
+    android:id="@+id/textTech"
+    android:textColor="@color/black"
+    android:layout_marginStart="20dp"
+    />
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:text="Пoзвонить"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textTech"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:textAlignment="center"
+        android:id="@+id/call"
+        android:paddingVertical="12dp"
+        android:background="@drawable/shape_price"
+        android:textColor="@color/secondaryDarkColor"
+        android:layout_marginHorizontal="20dp"
+        />
 
-</FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/call"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <LinearLayout
+            android:id="@+id/social_icons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:weightSum="2"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/facebook"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:src="@drawable/facebook" />
+
+            <ImageView
+                android:id="@+id/instagram"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:src="@drawable/instagram"
+                android:layout_weight="1"
+                app:layout_constraintStart_toEndOf="@id/facebook"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:background="@color/grey_lighter"
+            app:layout_constraintBottom_toTopOf="@id/social_icons"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:background="@color/grey_lighter"
+            app:layout_constraintTop_toBottomOf="@id/social_icons"/>
+
+        <LinearLayout
+            android:id="@+id/linear1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:weightSum="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/social_icons"
+            app:layout_constraintVertical_bias="0.589">
+
+            <TextView
+                android:id="@+id/vibor_dostavki"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/super_low_mp"
+                android:gravity="start"
+                android:text="Праводные документы"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"/>
+
+            <ImageView
+                android:id="@+id/goTo"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="end"
+                android:src="@drawable/ic_right"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:id="@+id/line5"
+            android:background="@color/grey_lighter"
+            app:layout_constraintTop_toBottomOf="@id/linear1"/>
+
+        <LinearLayout
+            android:id="@+id/goToAboutFragment"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line5">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/super_low_mp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="О приложении                 "
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_weight="1"
+                android:id="@+id/linear2"
+                android:src="@drawable/ic_right" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:background="@color/grey_lighter"
+            app:layout_constraintTop_toBottomOf="@id/goToAboutFragment"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
