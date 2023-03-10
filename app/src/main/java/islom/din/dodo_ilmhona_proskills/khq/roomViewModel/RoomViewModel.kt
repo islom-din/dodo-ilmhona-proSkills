@@ -1,5 +1,6 @@
 package islom.din.dodo_ilmhona_proskills.khq.roomViewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -67,7 +68,8 @@ class RoomViewModel(private val ingredientsDao: IngredientsDao,
 //    }
 
     fun newOrderHistory(order_number : Int,productId: Int,amount : Int){
-            val orderHistory = (OrderHistory(order_number = order_number, productId = productId, amount = amount))
+            val orderHistory = OrderHistory(order_number = order_number, productId = productId, amount = amount)
+            Log.d("TESTING","$orderHistory")
             orderDao.insertOrderHistory(orderHistory)
         }
 

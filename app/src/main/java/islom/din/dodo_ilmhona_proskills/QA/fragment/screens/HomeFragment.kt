@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +25,8 @@ import islom.din.dodo_ilmhona_proskills.databinding.ChipItemBinding
 import islom.din.dodo_ilmhona_proskills.databinding.FragmentHomeBinding
 import islom.din.dodo_ilmhona_proskills.QA.viewmodel.HomeViewModel
 import islom.din.dodo_ilmhona_proskills.application.DataBaseApplication
+import islom.din.dodo_ilmhona_proskills.paging.ApiViewModel
+import islom.din.dodo_ilmhona_proskills.paging.adapter.ProductAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -35,10 +38,12 @@ class HomeFragment : Fragment() {
 
     //View Model
     private val viewModel: HomeViewModel by activityViewModels()
+    private val apiViewModel : ApiViewModel by viewModels()
 
     private val args : HomeFragmentArgs by navArgs()
 
-    private lateinit var adapterForPizza: PizzaAdapter
+//    private lateinit var adapterForPizza: PizzaAdapter
+    private lateinit var adapterForPizza : ProductAdapter
 
     //Room View Model
     private val roomViewModel: RoomViewModel by activityViewModels {
@@ -64,7 +69,7 @@ class HomeFragment : Fragment() {
         if (!viewModel.hideBottomNavView)
             bottomNavigationView.visibility = View.VISIBLE
 
-        adapterForPizza = PizzaAdapter()
+        adapterForPizza = ProductAdapter()
 
         setupChip()
         scrollingOnCategoryClicked()
@@ -72,9 +77,16 @@ class HomeFragment : Fragment() {
         scrollingChangeListener()
         settingPizzaRecyclerView()
         setupInterestingRecyclerView()
+        onClickListener()
 
 
-
+    }
+    private fun onClickListener() {
+        binding.apiButton.setOnClickListener {
+            apiViewModel.getData()
+            binding.apiProgress.visibility = View.VISIBLE
+            binding.apiButton.visibility = View.GONE
+        }
     }
 
     private fun setupInterestingRecyclerView() {
@@ -154,7 +166,19 @@ class HomeFragment : Fragment() {
 
     private fun settingPizzaRecyclerView() {
         // Pizza recycler view initialising and setting adapter and list for it
-        adapterForPizza.submitList(viewModel.pizzaList)
+
+        apiViewModel.status.observe(viewLifecycleOwner) {
+            if (it){
+                adapterForPizza.submitList(apiViewModel.dataResult.value)
+                binding.apiButton.visibility = View.GONE
+                binding.apiProgress.visibility = View.GONE
+            }
+            else if (it == false) {
+                binding.apiButton.visibility = View.VISIBLE
+                binding.apiProgress.visibility = View.GONE
+            }
+        }
+
 
 //        Adding Pizzas to DB on price clicking
 //        adapterForPizza.order = { orderedPizza ->

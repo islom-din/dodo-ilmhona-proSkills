@@ -106,13 +106,12 @@ class KorzinaFragment() : Fragment() {
     private fun onOrderClicked(orderNumber : Int) {
         binding.btnCreateOrder.setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO) {
-//                roomViewModel.getOrderConnection(orderNumber).forEach {
-//                    roomViewModel.newOrderHistory(it.order_number,it.productId,it.amount)
-//                }
+                roomViewModel.getOrderConnection(orderNumber).forEach {
+                    roomViewModel.newOrderHistory(it.order_number,it.productId,it.amount)
+                }
                 roomViewModel.deleteOrderFromBusket(orderNumber)
                 val order = Order(userId = Constants.USER_ID)
                 roomViewModel.newOrder(order)
-                Log.d("TESTING3","${order.order_number}")
             }
         }
     }

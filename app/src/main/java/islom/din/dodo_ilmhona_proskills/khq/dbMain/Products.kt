@@ -11,4 +11,8 @@ data class Products (
     val price : Int?,
     val category : String,
     val about : String? = null,
-)
+) {
+    fun formatPrice(): String {
+        return "$price TJS"
+    }
+}
