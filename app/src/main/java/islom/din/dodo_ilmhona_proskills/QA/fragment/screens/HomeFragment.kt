@@ -1,33 +1,34 @@
 package islom.din.dodo_ilmhona_proskills.QA.fragment.screens
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.get
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.paging.LoadState
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.chip.Chip
-import islom.din.dodo_ilmhona_proskills.khq.roomViewModel.RoomViewModel
-import islom.din.dodo_ilmhona_proskills.khq.roomViewModel.RoomViewModelFactory
 import islom.din.dodo_ilmhona_proskills.QA.Constants
-import islom.din.dodo_ilmhona_proskills.R
 import islom.din.dodo_ilmhona_proskills.QA.adapter.InterestingAdapter
-import islom.din.dodo_ilmhona_proskills.QA.adapter.PizzaAdapter
+import islom.din.dodo_ilmhona_proskills.QA.viewmodel.HomeViewModel
+import islom.din.dodo_ilmhona_proskills.R
+import islom.din.dodo_ilmhona_proskills.application.DataBaseApplication
 import islom.din.dodo_ilmhona_proskills.databinding.ChipItemBinding
 import islom.din.dodo_ilmhona_proskills.databinding.FragmentHomeBinding
-import islom.din.dodo_ilmhona_proskills.QA.viewmodel.HomeViewModel
-import islom.din.dodo_ilmhona_proskills.application.DataBaseApplication
+import islom.din.dodo_ilmhona_proskills.khq.roomViewModel.RoomViewModel
+import islom.din.dodo_ilmhona_proskills.khq.roomViewModel.RoomViewModelFactory
 import islom.din.dodo_ilmhona_proskills.paging.ApiViewModel
 import islom.din.dodo_ilmhona_proskills.paging.adapter.ProductAdapter
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -38,7 +39,7 @@ class HomeFragment : Fragment() {
 
     //View Model
     private val viewModel: HomeViewModel by activityViewModels()
-    private val apiViewModel : ApiViewModel by viewModels()
+    private val apiViewModel : ApiViewModel by activityViewModels()
 
     private val args : HomeFragmentArgs by navArgs()
 
@@ -72,9 +73,9 @@ class HomeFragment : Fragment() {
         adapterForPizza = ProductAdapter()
 
         setupChip()
-        scrollingOnCategoryClicked()
+//        scrollingOnCategoryClicked()
         chooseOrderType()
-        scrollingChangeListener()
+//        scrollingChangeListener()
         settingPizzaRecyclerView()
         setupInterestingRecyclerView()
         onClickListener()
@@ -100,47 +101,47 @@ class HomeFragment : Fragment() {
 //        findNavController().navigate(directions)
 //    }
 
-    private fun scrollingChangeListener() {
-        binding.pizzaRv.setOnScrollChangeListener { v, _, _, _, _ ->
-            val pos =
-                (binding.pizzaRv.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
-
-            val currentList = adapterForPizza.currentList
-
-            if (currentList[pos].category == Constants.PIZZA) {
-                val chipsIndex = getIndexOfThisChip(currentList[pos].category)
-                val chip = binding.chipCategoryGroup[chipsIndex]
-                binding.chipCategoryGroup.check(chip.id)
-            } else {
-                if (currentList[pos].category != currentList[pos - 1].category ||
-                    currentList[pos].category != currentList[pos + 1].category
-                ) {
-                    val chipsIndex =
-                        getIndexOfThisChip(adapterForPizza.currentList[pos].category)
-                    val chip = binding.chipCategoryGroup[chipsIndex]
-                    binding.chipCategoryGroup.check(chip.id)
-                }
-            }
-        }
-    }
-
-    private fun scrollingOnCategoryClicked() {
-        binding.chipCategoryGroup.setOnCheckedStateChangeListener { group, checkedIds ->
-            var checkedId = checkedIds.first()
-            var checkedCategoryButton = requireActivity().findViewById<Chip>(checkedId)
-            checkedCategoryButton.setOnClickListener {
-                binding.pizzaRv.smoothScrollToPosition(adapterForPizza.currentList.indexOfFirst {
-                    it.category == checkedCategoryButton.text
-                } + 1)
-                //Expands App Bar layout
-                if (checkedCategoryButton.text == Constants.PIZZA)
-                    binding.mainAppBar.setExpanded(true)
-                else binding.mainAppBar.setExpanded(false)
-
-                scrollingChangeListener()
-            }
-        }
-    }
+//    private fun scrollingChangeListener() {
+//        binding.pizzaRv.setOnScrollChangeListener { v, _, _, _, _ ->
+//            val pos =
+//                (binding.pizzaRv.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+//
+//            val currentList = adapterForPizza.currentList
+//
+//            if (currentList[pos].category == Constants.PIZZA) {
+//                val chipsIndex = getIndexOfThisChip(currentList[pos].category)
+//                val chip = binding.chipCategoryGroup[chipsIndex]
+//                binding.chipCategoryGroup.check(chip.id)
+//            } else {
+//                if (currentList[pos].category != currentList[pos - 1].category ||
+//                    currentList[pos].category != currentList[pos + 1].category
+//                ) {
+//                    val chipsIndex =
+//                        getIndexOfThisChip(adapterForPizza.currentList[pos].category)
+//                    val chip = binding.chipCategoryGroup[chipsIndex]
+//                    binding.chipCategoryGroup.check(chip.id)
+//                }
+//            }
+//        }
+//    }
+//
+//    private fun scrollingOnCategoryClicked() {
+//        binding.chipCategoryGroup.setOnCheckedStateChangeListener { group, checkedIds ->
+//            var checkedId = checkedIds.first()
+//            var checkedCategoryButton = requireActivity().findViewById<Chip>(checkedId)
+//            checkedCategoryButton.setOnClickListener {
+//                binding.pizzaRv.smoothScrollToPosition(adapterForPizza.currentList.indexOfFirst {
+//                    it.category == checkedCategoryButton.text
+//                } + 1)
+//                //Expands App Bar layout
+//                if (checkedCategoryButton.text == Constants.PIZZA)
+//                    binding.mainAppBar.setExpanded(true)
+//                else binding.mainAppBar.setExpanded(false)
+//
+//                scrollingChangeListener()
+//            }
+//        }
+//    }
 
     private fun chooseOrderType() {
         viewModel.orderStreet.observe(requireActivity()) {
@@ -167,18 +168,33 @@ class HomeFragment : Fragment() {
     private fun settingPizzaRecyclerView() {
         // Pizza recycler view initialising and setting adapter and list for it
 
-        apiViewModel.status.observe(viewLifecycleOwner) {
-            if (it){
-                adapterForPizza.submitList(apiViewModel.dataResult.value)
-                binding.apiButton.visibility = View.GONE
-                binding.apiProgress.visibility = View.GONE
-            }
-            else if (it == false) {
-                binding.apiButton.visibility = View.VISIBLE
-                binding.apiProgress.visibility = View.GONE
+//        apiViewModel.status.observe(viewLifecycleOwner) {
+//            if (it){
+//                adapterForPizza.submitList(apiViewModel.dataResult.value)
+//                binding.apiButton.visibility = View.GONE
+//                binding.apiProgress.visibility = View.GONE
+//            }
+//            else if (it == false) {
+//                binding.apiButton.visibility = View.VISIBLE
+//                binding.apiProgress.visibility = View.GONE
+//            }
+//        }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                adapterForPizza.loadStateFlow.collect {
+                    binding.appendProgress.isVisible = it.source.append is LoadState.Loading
+                }
             }
         }
 
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                apiViewModel.getAllPizzas().collectLatest {
+                    adapterForPizza.submitData(it)
+                }
+            }
+        }
 
 //        Adding Pizzas to DB on price clicking
 //        adapterForPizza.order = { orderedPizza ->

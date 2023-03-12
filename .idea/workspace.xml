@@ -13,19 +13,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be367871-fa57-4a23-8207-cc25b095f419" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/paging/ApiViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/paging/PizzaApi.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/paging/adapter/ProductAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/paging/adapter/ProductDiffUtls.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/paging/data/PizzaApiSource.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/QA/fragment/screens/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/QA/fragment/screens/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/khq/dbMain/Products.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/khq/dbMain/Products.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/khq/fragments/KorzinaFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/khq/fragments/KorzinaFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/khq/roomViewModel/RoomViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/khq/roomViewModel/RoomViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/paging/ApiViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/paging/ApiViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/paging/PizzaApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/paging/api/PizzaApi.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/paging/adapter/ProductAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/islom/din/dodo_ilmhona_proskills/paging/adapter/ProductAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,13 +38,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="navigationResourceFile" />
-        <option value="valueResourceFile" />
         <option value="layoutResourceFile" />
         <option value="Kotlin Data Class" />
         <option value="Kotlin Interface" />
         <option value="Kotlin File" />
-        <option value="Kotlin Class" />
         <option value="resourceFile" />
+        <option value="valueResourceFile" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -94,7 +89,7 @@
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../android-paging/basic/start" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">

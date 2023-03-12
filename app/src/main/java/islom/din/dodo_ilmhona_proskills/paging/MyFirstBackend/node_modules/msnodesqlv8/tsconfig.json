@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "rootDir": "./",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "target": "es6",
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "declaration": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "pretty": true,
+    "strictNullChecks": true,
+    "outDir": "./dist"
+  },
+  "compileOnSave": true,
+  "include": [
+    "samples/**/*",
+    "lib/**/*",
+    "test/**/*",
+    "lib/*",
+    "lib/index.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "./dist"
+  ]
+}

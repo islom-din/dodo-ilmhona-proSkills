@@ -313,7 +313,7 @@
         <ProgressBar
             android:layout_gravity="top"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:visibility="visible"
+            android:visibility="gone"
             android:translationZ="2dp"
             android:id="@+id/api_progress"
             android:layout_width="wrap_content"
@@ -343,4 +343,14 @@
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/append_progress"
+        android:background="@color/secondaryColor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
